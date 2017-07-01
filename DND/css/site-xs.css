@@ -533,6 +533,7 @@ ng-map {
 }
 
 .card-spacer-bottom {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 

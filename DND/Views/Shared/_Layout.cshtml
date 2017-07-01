@@ -238,6 +238,7 @@
     <script>
         var InstagramUserId = '@System.Configuration.ConfigurationManager.AppSettings["InstagramUserId"]';
         var InstagramAccessToken = '@System.Configuration.ConfigurationManager.AppSettings["InstagramAccessToken"]';
+        var cssUrl = '@Styles.Url("~/css/all")';
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=@(System.Configuration.ConfigurationManager.AppSettings["GoogleMapsApiKey"] + "&libraries=places")"></script>
