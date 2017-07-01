@@ -1,0 +1,6 @@
+﻿<div class="sidebar-module sidebar-module-inset">
+    <a title="About" href="@(Html.BuildUrlFromExpression<HomeController>(c => c.About()))"><h4>About</h4></a>
+    <div class="instagram-profile-picture text-center margin-bottom-10 instafeed"></div>
+    <p class="instagram-bio"></p>
+    @(Html.Action<ContentHtmlController>(c=> c.DetailsChildNoCache(CMS.ContentHtml.SideBarAbout), true))
+</div>

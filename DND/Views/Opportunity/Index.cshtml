@@ -1,0 +1,19 @@
+﻿@model FlashpackerFlights.Core.ViewModels.OpportunityViewModel[]
+
+@{
+	ViewBag.Title = "All Opportunities";
+}
+
+@foreach (var opportunity in Model)
+{
+	<div class="card">
+		<div class="card-block">
+			<h4>
+				@opportunity.CustomerName - @opportunity.Title
+				<small class="pull-right">@opportunity.DateCreated.ToShortDateString()</small>
+			</h4>
+			<hr />
+			<p>@opportunity.Description</p>
+		</div>
+	</div>
+}

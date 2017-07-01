@@ -1,0 +1,28 @@
+{
+  "name": "DND",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "font-awesome": "^4.6.3",
+    "jQuery": "^3.1.0",
+    "jquery-validate": "^1.15.1",
+    "jquery-validation-unobtrusive": "^3.2.6",
+    "respond": "^1.4.2",
+    "angular": "^1.5.8",
+    "angular-bootstrap": "^2.1.3",
+    "angular-ui-grid": "^3.2.7",
+    "angular-animate": "^1.5.8",
+    "angularjs-slider": "^5.5.1",
+    "angular-cookies": "^1.5.8",
+    "ngmap": "*",
+    "world-flags-sprite": "*",
+    "amitava82-angular-multiselect": "^1.2.0",
+    "underscore": "^1.8.3",
+    "instafeed.js": "^1.4.1",
+    "magnific-popup": "^1.1.0",
+    "tinymce": "^4.5.5"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
+  }
+}

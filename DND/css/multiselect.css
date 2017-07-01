@@ -1,0 +1,19 @@
+am-multiselect .dropdown-menu{
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 400px;
+    overflow-y: scroll;
+}
+
+am-multiselect .dropdown-menu li {
+    padding-top:3px;
+}
+
+am-multiselect .dropdown-menu > li > a {
+    padding: 3px 10px;
+    cursor:pointer;
+}
+
+am-multiselect .dropdown-menu > li.selected {
+    background-color: #ADD8E6;
+}

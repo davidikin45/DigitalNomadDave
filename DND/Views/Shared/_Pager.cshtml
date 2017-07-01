@@ -1,0 +1,42 @@
+﻿@model DND.Core.ViewModels.BlogPostListViewModel
+
+@* Read the current page and total pages *@
+
+@{
+    var currentPage = ViewContext.RequestContext.HttpContext.Request["page"] != null
+  ? int.Parse(ViewContext.RequestContext.HttpContext.Request["page"])
+  : 1;
+
+    var totalPages = Math.Ceiling((double)Model.TotalPosts / 10);
+}
+
+@* Check do we need to display pagination links *@
+
+@if (currentPage > 1 || currentPage < totalPages)
+{
+        var p = string.Format("page={0}", currentPage - 1);
+        var n = string.Format("page={0}", currentPage + 1);
+
+        @* If the view is rendered for "search" action append the pagination value with "&" *@
+
+    if (ViewContext.RouteData.Values["action"].ToString()
+    .Equals("search", StringComparison.OrdinalIgnoreCase))
+    {
+        var s = String.Format("?s={0}", ViewContext.RequestContext.HttpContext.Request.QueryString["s"]);
+        p = String.Format("{0}&{1}", s, p);
+        n = String.Format("{0}&{1}", s, n);
+    }
+    else
+    {
+        p = String.Concat("?", p);
+        n = String.Concat("?", n);
+    }
+
+      <!--pagination links-->
+        <div class="pagination">
+
+            <a href="@Request.Url.GetLeftPart(UriPartial.Path)@p" title="Previous" class="previous btn btn-primary my-2 my-sm-0" style="visibility:@(currentPage > 1 ? "visible" : "hidden") !important"><< previous</a>
+
+            <a href="@Request.Url.GetLeftPart(UriPartial.Path)@n" title="Next" class="next btn btn-primary my-2 my-sm-0" style="visibility:@(currentPage < totalPages ? "visible" : "hidden")">next >></a>
+        </div>
+}

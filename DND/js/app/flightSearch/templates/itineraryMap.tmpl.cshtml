@@ -1,0 +1,32 @@
+﻿@model DND.Core.DTOs.ItineraryDTO
+@{
+    var itinerary = Html.Angular().ModelFor("vm.itinerary");
+}
+<div>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$parent.$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title">Edit Customer</h3>
+    </div>
+
+    <div class="modal-body">
+
+
+        <ng-map zoom="2" center="0, -180" map-type-id="TERRAIN">
+            <shape name="polyline"
+                   path="[
+        [ @itinerary.BindingFor(x => x.OriginAirportLatitude), @itinerary.BindingFor(x => x.OriginAirportLongitude)],
+        [ @itinerary.BindingFor(x => x.DestinationAirportLatitude), @itinerary.BindingFor(x => x.DestinationAirportLongitude)]
+                        ]"
+                   geodesic="true"
+                   stroke-color="#FF0000"
+                   stroke-opacity="1.0"
+                   stroke-weight="1">
+            </shape>
+        </ng-map>
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning" ng-click="$parent.$dismiss()">Close</button>
+    </div>
+</div>

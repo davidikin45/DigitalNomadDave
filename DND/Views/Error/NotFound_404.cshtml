@@ -1,0 +1,23 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.PageTitle = "404 - The resource cannot be found";
+    ViewBag.NoFollow = true;
+    Response.StatusCode = 404;
+}
+
+<p>404 - The resource cannot be found</p>
+
+@if (Model != null && Request.IsLocal)
+{
+    <p>
+        Exception Type: @Model.Exception.GetType().Name
+        <br />
+        Controller: @Model.ControllerName
+        <br />
+        Action: @Model.ActionName
+    </p>
+    <pre>
+        @Model.Exception.ToString()
+    </pre>
+}

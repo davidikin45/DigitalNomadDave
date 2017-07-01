@@ -1,0 +1,32 @@
+﻿<div>
+    <div style="position:absolute; z-index:10; width:100%">
+        <div class="container">
+            <div class="row">
+                <!--First columnn-->
+                <div class="col-12">
+                    <!--Card-->
+                    <div class="card transparentpanel margin-top-30">
+
+                        <!--Card content-->
+                        <div class="card-block">
+                            <!--Title-->
+                            @*<h4 class="card-title">Card title</h4>*@
+                            <!--Text-->
+                            @*<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a class="btn btn-primary waves-effect waves-light pull-right" href="#">Search</a>*@
+
+                            @*<flight-search/>*@
+                            @Html.Partial("~/Views/Shared/_Search.cshtml")
+                        </div>
+                        <!--/.Card content-->
+                    </div>
+                    <!--/.Card-->
+                </div>
+            </div>
+            <!--First columnn-->
+        </div>
+    </div>
+    <ng-map default-style="false" zoom="3" center="0, -180" map-type-id="TERRAIN">
+
+    </ng-map>
+</div>

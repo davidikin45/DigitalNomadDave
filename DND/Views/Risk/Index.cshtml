@@ -1,0 +1,19 @@
+﻿@model FlashpackerFlights.Core.ViewModels.RiskViewModel[]
+
+@{
+	ViewBag.Title = "All Risks";
+}
+
+@foreach (var risk in Model)
+{
+	<div class="card">
+		<div class="card-block">
+			<h4>
+				@risk.CustomerName - @risk.Title
+				<small class="pull-right">@risk.DateCreated.ToShortDateString()</small>
+			</h4>
+			<hr />
+			<p>@risk.Description</p>
+		</div>
+	</div>
+}

@@ -1,0 +1,38 @@
+﻿@model LocationDTO
+
+@{
+    var mainPhotoVideo = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album).MainPhotoOrVideo();
+    var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
+
+    ViewBag.PageTitle = Model.Name;
+    ViewBag.Description = Model.DescriptionBody;
+
+    ViewBag.MainImage = mainImageShare;
+    ViewBag.Blog = true;
+}
+
+<div class="row">
+    <!-- AddThis -->
+    <div class="col-12 blog-post-share-links">
+        @Html.AddThisLinks(System.Configuration.ConfigurationManager.AppSettings["SiteUrl"], Url.RouteUrl<LocationController>(c => c.Location(Model.UrlSlug)), string.Format("{0} | {1}", (string)ViewBag.PageTitle.ToString(), (string)System.Configuration.ConfigurationManager.AppSettings["SiteTitle"]), Model.DescriptionBody, mainImageShare)
+    </div>
+</div>
+<div class="blog-post-body gallery">
+    @Html.Partial("_Location", Model, new ViewDataDictionary { { "HideName", true } })
+    <ng-map style="height:400px;" center="@Model.GPSLocation.Latitude.ToString(),@Model.GPSLocation.Longitude.ToString()" zoom="@if (Model.LocationType == DND.Core.Enums.LocationType.Country){<text>3</text>}else{<text>7</text>}" ng-controller="MapCtrl as vm">
+        <marker position="@Model.GPSLocation.Latitude.ToString(),@Model.GPSLocation.Longitude.ToString()" title="@Model.Name" on-click="vm.openGoogleMap(event, '@(Model.PlaceId)')"></marker>
+    </ng-map>
+</div>
+<br />
+
+@*INCLUDE DISQUS *@
+@if (System.Configuration.ConfigurationManager.AppSettings.AllKeys.Contains("FacebookAppId") && System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"] != "")
+{
+    @Html.FacebookCommentsThread(System.Configuration.ConfigurationManager.AppSettings["SiteUrl"], Url.RouteUrl<LocationController>(c => c.Location(Model.UrlSlug)), Model.Name)
+}
+
+@if (System.Configuration.ConfigurationManager.AppSettings.AllKeys.Contains("DisqusShortName") && System.Configuration.ConfigurationManager.AppSettings["DisqusShortName"] != "")
+{
+    @Html.DisqusThread(System.Configuration.ConfigurationManager.AppSettings["DisqusShortName"], System.Configuration.ConfigurationManager.AppSettings["SiteUrl"], Url.RouteUrl<LocationController>(c => c.Location(Model.UrlSlug)), Model.Name)
+}
+

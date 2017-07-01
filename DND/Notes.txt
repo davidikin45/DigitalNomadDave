@@ -1,0 +1,83 @@
+﻿
+scope:{} = interface
+@ string = one way
+= model = two way
+& method = method
+
+
+use parent with 
+scope: false (default)
+
+create a child scope prototypically inherited with scope: true - takes a copy
+
+
+isloate scope 
+scope: {} *********** best practice***************
+
+
+@ Attribute string binding
+= Two-way model binding
+& Callback method binding
+
+The symbols also make it clearer as to what the scope variable represents inside of your directive's implementation:
+@ string
+= model
+& method
+
+
+To pass both way binding to directive use variable: "="
+function editCustomer() {
+		return {
+			scope: {
+				customer: "="
+			},
+			templateUrl: '/customer/template/editCustomer.tmpl.cshtml',
+			controller: controller,
+			controllerAs: 'vm'
+		}
+	}
+
+To access variable in controller use $scope.varialbe
+controller.$inject = ['$scope', 'customerSvc'];
+	function controller($scope, customerSvc) {
+		var vm = this;
+		vm.save = save;
+
+		vm.saving = false;
+		vm.customer = angular.copy($scope.customer);
+		vm.errorMessage = null;
+
+		function save() {
+			vm.saving = true;
+			customerSvc.update($scope.customer, vm.customer)
+				.success(function () {
+					//Close the modal
+					$scope.$parent.$close();
+				})
+				.error(function(data) {
+					vm.errorMessage = 'There was a problem saving changes to the customer: ' + data;
+				})
+				.finally(function() {
+					vm.saving = false;
+				});
+		}
+	}
+
+
+Example:
+scope: {
+        name: "@",
+        color: "=",
+        reverse: "&"
+    }
+
+
+<div my-directive 
+  class="directive"
+  name="{{name}}" 
+  reverse="reverseName()" 
+  color="color" >
+</div>
+
+https://favicon.io/
+http://www.favicomatic.com/

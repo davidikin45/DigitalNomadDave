@@ -1,0 +1,46 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Language, Market(s) and Currency</h3>
+</div>
+
+<div class="modal-body">
+
+    <div class="row">
+        <div class="col-12">
+            <label class="col-form-label">Language</label>
+            <div>
+                @*<select name="selectedLocale" ng-model="vm.selectedLocaleId" ng-change="vm.onLocaleChange()">
+                    <option ng-repeat="locale in vm.locales" value="{{locale.id}}">{{locale.name}}</option>
+                </select>*@
+
+                <am-multiselect class="input-lg"
+                                ng-model="vm.selectedLocaleId"
+                                options="locale.id as locale.name for locale in vm.locales"
+                                change="selected(); vm.onLocaleChange();"></am-multiselect>
+            </div>
+
+        </div>
+        <div class="col-12">
+            <label class="col-form-label">Market(s)</label>
+            <div>
+                <am-multiselect class="input-lg" multiple="true" ms-selected="There are {{vm.selectedMarketIds.length}} market(s) selected"
+                                ng-model="vm.selectedMarketIds" ms-header="Select Markets"
+                                options="market.id as market.name for market in vm.markets"
+                                change="selected(); vm.onMarketChange();"></am-multiselect>
+            </div>
+        </div>
+        <div class="col-12">
+            <label class="col-form-label">Currency</label>
+            <div>
+                <am-multiselect class="input-lg"
+                                ng-model="vm.selectedCurrencyId"
+                                options="currency.id as (currency.id + ' — ' + currency.symbol) for currency in vm.currencies"
+                                change="selected(); vm.onCurrencyChange();"></am-multiselect>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button type="button" ng-click="vm.resetLocaleMarketCurrency()" class="btn btn-primary">Reset</button>
+    <button type="button" ng-click="$dismiss(); vm.close()" class="btn btn-primary">Done</button>
+</div>

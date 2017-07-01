@@ -1,0 +1,11 @@
+﻿
+@if (ViewBag.DisableCreate == null ? true : !ViewBag.DisableCreate)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@PartialExtensions.Partial(Html, "_List", Model.Data)
+@{Func<int, string> link = pageIndex => Url.Action("Index", new { page = pageIndex, pageSize = Model.PageSize, orderColumn = Model.OrderColumn, orderType = Model.OrderType });}
+@HtmlHelperExtensions.BootstrapPager(Html, Model.Page, link, Model.TotalItems, Model.PageSize, 5)

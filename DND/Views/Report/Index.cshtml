@@ -1,0 +1,18 @@
+﻿
+@using FlashpackerFlights.Core.ViewModels
+@model dynamic
+
+@{
+	ViewBag.Title = "Reports";
+}
+
+@(Html.Angular().GridFor<ReportController>(c => c.NewCustomers())
+	.Title("New Customers")
+	.Columns<NewCustomerReportViewModel>(config =>
+	{
+		config.Add(x => x.Name);
+		config.Add(x => x.WorkEmail);
+		config.Add(x => x.DateCreated, "Date Joined", "date: 'MM/dd/yyyy'");
+	}))
+<br />
+<lost-customers-report ></lost-customers-report>

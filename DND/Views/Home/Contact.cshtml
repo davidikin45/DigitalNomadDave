@@ -1,0 +1,22 @@
+﻿@model Solution.Base.Implementation.Model.Contact
+@{
+    ViewBag.PageTitle = "Contact Me";
+    ViewBag.Description = "Contact Me";
+    ViewBag.Blog = true;
+}
+
+@(Html.Action<ContentHtmlController>(c => c.DetailsChild(Solution.Base.Constants.CMS.ContentHtml.Contact),true))
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    //Only displays Model level validation
+    @Html.ValidationSummary(true)
+    @Html.EditorForModel()
+    <div class="form-group row">
+        <div class="offset-md-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </div>
+}

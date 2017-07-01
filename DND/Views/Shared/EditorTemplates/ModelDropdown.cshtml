@@ -1,0 +1,7 @@
+﻿@using Solution.Base;
+@using Solution.Base.Extensions;
+@using DND.Core.Interfaces.Persistance;
+
+@model dynamic
+
+@(Html.DropDownListFromDatabase<IApplicationDbContext>("", new { @class = "form-control" }))

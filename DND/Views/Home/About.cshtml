@@ -1,0 +1,7 @@
+﻿@{
+    ViewBag.PageTitle = "About";
+    ViewBag.Description = "About Digital Nomad Dave";
+    ViewBag.Blog = true;
+}
+
+@(Html.Action<ContentHtmlController>(c => c.DetailsChild(CMS.ContentHtml.About), true))

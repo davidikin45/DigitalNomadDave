@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.PageTitle = "Work With Me";
+    ViewBag.Description = "Work With Me";
+    ViewBag.Blog = true;
+}
+
+@(Html.Action<ContentHtmlController>(c => c.DetailsChild(CMS.ContentHtml.WorkWithMe), true))
+@(Html.Action<TestimonialController>(c => c.Testimonials()))
+<br />
+<h2>Projects</h2>
+@(Html.Action<ProjectController>(c => c.Projects()))

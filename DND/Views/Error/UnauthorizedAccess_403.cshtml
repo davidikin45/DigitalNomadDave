@@ -1,0 +1,23 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.PageTitle = "Unauthorized Access";
+    ViewBag.NoFollow = true;
+    Response.StatusCode = 403;
+}
+
+<p>403 - Unauthorized Access</p>
+
+@if (Model != null && Request.IsLocal)
+{
+    <p>
+        Exception Type: @Model.Exception.GetType().Name
+        <br />
+        Controller: @Model.ControllerName
+        <br />
+        Action: @Model.ActionName
+    </p>
+    <pre>
+        @Model.Exception.ToString()
+    </pre>
+}

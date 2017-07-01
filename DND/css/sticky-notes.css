@@ -1,0 +1,92 @@
+﻿ul.sticky-notes {
+    list-style: none;
+    padding-left: 10px;
+    padding-bottom: 40px;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+    ul.sticky-notes li {
+        width: 220px;
+        height: 200px;
+        padding: 30px;
+        margin: 35px;
+        float: left;
+        /* Firefox */
+        -moz-box-shadow: 5px 5px 7px rgba(33,33,33,1);
+        /* Safari+Chrome */
+        -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        /* Opera */
+        box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+        -webkit-transform: rotate(-6deg);
+        -o-transform: rotate(-6deg);
+        transform: rotate(-6deg);
+        -moz-transform: rotate(-6deg);
+       
+    }
+
+    ul.sticky-notes p {
+        font-size: 1.4em;
+    }
+
+    ul.sticky-notes li:nth-child(odd) {
+        -o-transform: rotate(4deg);
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        transform: rotate(4deg);
+        position: relative;
+        top: 5px;
+    }
+
+    ul.sticky-notes li:nth-child(2n) {
+        -o-transform: rotate(-3deg);
+        -webkit-transform: rotate(-3deg);
+        -moz-transform: rotate(-3deg);
+        transform: rotate(-3deg);
+        position: relative;
+        top: -5px;
+    }
+
+    ul.sticky-notes li:nth-child(6n) {
+        -o-transform: rotate(5deg);
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        transform: rotate(5deg);
+        position: relative;
+        top: -10px;
+    }
+
+    ul.sticky-notes li:hover {
+        -webkit-transform: scale(1.5);
+        -moz-transform: scale(1.5);
+        -o-transform: scale(1.5);
+        transform: scale(1.5);
+        position: relative;
+        z-index: 10;
+        -moz-box-shadow: 0px 10px 7px rgba(0,0,0,.7);
+        -webkit-box-shadow: 0px 10px 7px rgba(0,0,0,.7);
+        box-shadow: 0px 10px 7px rgba(0,0,0,.7);
+        -webkit-transition: all 300ms ease-in 50ms; /* property duration timing-function delay */
+        -moz-transition: all 300ms ease-in 50ms;
+        -o-transition: all 300ms ease-in 50ms;
+        transition: all 300ms ease-in 50ms;
+        cursor: pointer;
+    }
+
+.yellow {
+    background: #ffb400;
+}
+
+.blue {
+    background: #00c0ff;
+}
+
+.purple {
+    background: #DD295C;
+}
+
+.completed {
+    text-decoration: line-through;
+}

@@ -1,0 +1,47 @@
+﻿@model WebApiPagedResponseDTO<FileInfo>
+
+@{
+    ViewBag.PageTitle = ((DirectoryInfo)ViewBag.Album).Name.PascalCase().GetStringWithSpacesAndFirstLetterUpper();
+    ViewBag.Description = ((DirectoryInfo)ViewBag.Album).Name.PascalCase().GetStringWithSpacesAndFirstLetterUpper() + " Album";
+
+    ViewBag.Blog = true;
+    //ViewBag.BlogFullWidth = true;
+    var mainPhotoVideo = ((DirectoryInfo)ViewBag.Album).MainPhotoOrVideo();
+    var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
+    ViewBag.MainImage = mainImageShare;
+}
+
+<div class="row">
+    <!-- AddThis -->
+    <div class="col-12 blog-post-share-links">
+        @Html.AddThisLinks(System.Configuration.ConfigurationManager.AppSettings["SiteUrl"], Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"] }).ToString(), string.Format("{0} | {1}", (string)ViewBag.PageTitle.ToString(), (string)System.Configuration.ConfigurationManager.AppSettings["SiteTitle"]), (string)ViewBag.PageTitle.ToString() + " Album", mainImageShare)
+    </div>
+</div>
+
+<div class="instafeed card-columns-md-2 gallery">
+    @foreach (var item in Model.Data)
+    {
+        @Html.Partial("_Media", item, new ViewDataDictionary { {"width", 0 }})
+    @*<div class="card-spacer">&nbsp;</div>*@
+    }
+</div>
+
+@{Func<int, string> link = pageIndex => Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"], page = pageIndex });}
+@HtmlHelperExtensions.BootstrapPager(Html, Model.Page, link, Model.TotalItems, Model.PageSize, 5)
+
+@if (System.Configuration.ConfigurationManager.AppSettings.AllKeys.Contains("FacebookAppId") && System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"] != "")
+{
+@Html.FacebookCommentsThread(
+        System.Configuration.ConfigurationManager.AppSettings["SiteUrl"].ToString(),
+        Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"] }).ToString(),
+        (string)ViewBag.PageTitle.ToString())
+}
+
+@if (System.Configuration.ConfigurationManager.AppSettings.AllKeys.Contains("DisqusShortName") && System.Configuration.ConfigurationManager.AppSettings["DisqusShortName"] != "")
+{
+@Html.DisqusThread(
+        System.Configuration.ConfigurationManager.AppSettings["DisqusShortName"].ToString(),
+        System.Configuration.ConfigurationManager.AppSettings["SiteUrl"].ToString(),
+        Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"] }).ToString(),
+        (string)ViewBag.PageTitle.ToString())
+}
