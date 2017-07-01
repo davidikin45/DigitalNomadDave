@@ -67,11 +67,6 @@
         });
         userFeed.run();
 
-        $(window).scroll(function () {
-            if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-            userFeed.next();
-          }
-
          var userFeed2 = new Instafeed({
             get: 'user',
             resolution: 'standard_resolution',
