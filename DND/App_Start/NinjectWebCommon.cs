@@ -70,7 +70,7 @@ namespace DND.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var appName = "DND";
+            var appName = System.Configuration.ConfigurationManager.AppSettings["AssemblyPrefix"];
             var kernel = NinjectConfig.BuildKernel<User>(appName);
             try
             {
@@ -94,61 +94,7 @@ namespace DND.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //kernel.Bind<IBaseDbContext>().To<IApplicationDbContext>();
-           // //https://visualstudiomagazine.com/articles/2014/10/01/binding-by-convention.aspx
-           //  string pluginsPath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "plugins\\");
-           //if (!Directory.Exists(pluginsPath)) Directory.CreateDirectory(pluginsPath);
-
-           // Predicate<Assembly> filterPredictate = (a => a.FullName.Contains("DND") || a.FullName.Contains("Solution"));
-           //Func<Assembly, Boolean> filterFunc = (a => a.FullName.Contains("DND") || a.FullName.Contains("Solution"));
-
             
-
-           // //kernel.Bind(x => x
-           // //   .FromAssembliesInPath(pluginsPath, filterPredictate)
-           // //  .SelectAllClasses()
-           // //   .BindDefaultInterface());
-
-           // //kernel.Bind(x => x
-           // //.FromAssembliesInPath(pluginsPath, filterPredictate)
-           // //.SelectAllClasses()
-           // //.BindAllInterfaces());
-
-           // //Events
-           // var types = new List<Type>();
-           // types.Add(typeof(IRunAtInit));
-           // types.Add(typeof(IRunAtStartup));
-           // types.Add(typeof(IRunOnEachRequest));
-           // types.Add(typeof(IRunOnError));
-           // types.Add(typeof(IRunAfterEachRequest));
-
-           // kernel.Bind(x => x
-           //  .FromAssembliesInPath(pluginsPath, filterPredictate)
-           //  .SelectAllClasses().InheritedFromAny(types)
-           // .BindAllInterfaces());
-
-           //// kernel.Load(new NinjectAutomapperModule("DND"));
-
-           // //kernel.Bind<ModelMetadataProvider>().To<ExtensibleModelMetadataProvider>();
-
-           // //Will only bind to referenced assemblies
-           // //kernel.Bind(x => x.FromAssembliesMatching("DND.*.dll")
-           // //   .SelectAllClasses()
-           // // .BindDefaultInterface()
-           // //  );
-
-           // //https://visualstudiomagazine.com/articles/2014/10/01/binding-by-convention.aspx
-           // //string pluginsPath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "plugins\\");
-           // //if (!Directory.Exists(pluginsPath)) Directory.CreateDirectory(pluginsPath);
-
-           // //Predicate<Assembly> filterPredictate = (a => a.FullName.Contains(_name) || a.FullName.Contains("Solution"));
-           // //Func<Assembly, Boolean> filterFunc = (a => a.FullName.Contains(_name) || a.FullName.Contains("Solution"));
-
-           // kernel.Bind(x => x
-           //   .FromAssembliesInPath(pluginsPath, filterPredictate)
-           //   .SelectAllClasses().InheritedFrom<IModelMetadataFilter>()
-           //   .BindAllInterfaces());
-
         }
     }
 }

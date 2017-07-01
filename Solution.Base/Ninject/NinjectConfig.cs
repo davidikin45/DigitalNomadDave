@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using System.Configuration;
 
 namespace Solution.Base.Ninject
 {
@@ -25,8 +26,10 @@ namespace Solution.Base.Ninject
             string pluginsPath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "plugins\\");
             if (!Directory.Exists(pluginsPath)) Directory.CreateDirectory(pluginsPath);
 
-            Func<Assembly, Boolean> filterFunc = (a => a.FullName.Contains(name) || a.FullName.Contains("DND") || a.FullName.Contains("Solution"));
-            Func<Type, Boolean> filter = (a => a.FullName.Contains(name) || a.FullName.Contains("DND") || a.FullName.Contains("Solution"));
+            var assemblyPrefix = ConfigurationManager.AppSettings["AssemblyPrefix"];
+
+            Func<Assembly, Boolean> filterFunc = (a => a.FullName.Contains(name) || a.FullName.Contains(assemblyPrefix) || a.FullName.Contains("Solution"));
+            Func<Type, Boolean> filter = (a => a.FullName.Contains(name) || a.FullName.Contains(assemblyPrefix) || a.FullName.Contains("Solution"));
 
             var modules = new INinjectModule[]
            {
