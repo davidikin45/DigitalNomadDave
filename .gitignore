@@ -287,3 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 /DND/App_Data/ffmpeg/ffmpeg.exe
+DND/Web.Release.config
