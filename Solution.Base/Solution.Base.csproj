@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7F28D81-8666-4DD4-A3C5-235E56C3F30B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Solution.Base</RootNamespace>
+    <AssemblyName>Solution.Base</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.6.12\lib\net45\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.6.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.6.12\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlTags.4.2.0\lib\net45\HtmlTags.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Humanizer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.1.0\lib\netstandard1.0\Humanizer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.Futures.5.0.0\lib\net40\Microsoft.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.1.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.1\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.6.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.6.1\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="RefactorThis.GraphDiff, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RefactorThis.GraphDiff.2.0.1\lib\RefactorThis.GraphDiff.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionResults\AllowJsonGetAttribute.cs" />
+    <Compile Include="ActionResults\WebApiForbiddenResult.cs" />
+    <Compile Include="ActionResults\HttpForbiddenResult.cs" />
+    <Compile Include="ActionResults\HTMLActionResult.cs" />
+    <Compile Include="ActionResults\RSSActionResult.cs" />
+    <Compile Include="ActionResults\TransferRequestResult.cs" />
+    <Compile Include="Alerts\WebApiMessage.cs" />
+    <Compile Include="ActionResults\BetterJsonResult.cs" />
+    <Compile Include="Alerts\Alert.cs" />
+    <Compile Include="Alerts\AlertDecoratorResult.cs" />
+    <Compile Include="Alerts\AlertExtensions.cs" />
+    <Compile Include="Alerts\Messages.cs" />
+    <Compile Include="APIs\APIConstants.cs" />
+    <Compile Include="APIs\Google.cs" />
+    <Compile Include="APIs\Instagram.cs" />
+    <Compile Include="APIs\IPLocator.cs" />
+    <Compile Include="App_Start\BaseFilterConfig.cs" />
+    <Compile Include="App_Start\BaseWebApiConfig.cs" />
+    <Compile Include="App_Start\BaseRouteConfig.cs" />
+    <Compile Include="App_Start\JsonConfig.cs" />
+    <Compile Include="App_Start\ModelBinderConfig.cs" />
+    <Compile Include="App_Start\RazorViewEngineConfig.cs" />
+    <Compile Include="App_Start\ServicePointMonitorConfig.cs" />
+    <Compile Include="App_Start\MvcConfig.cs" />
+    <Compile Include="App_Start\SQLConfig.cs" />
+    <Compile Include="Authorization\MvcAuthorizeAttribute.cs" />
+    <Compile Include="Authorization\WebApiAuthorizeAttribute.cs" />
+    <Compile Include="Automapper\AutomapperConfiguration.cs" />
+    <Compile Include="Constants\CMS.cs" />
+    <Compile Include="Constants\Folders.cs" />
+    <Compile Include="Controllers\Admin\AdminContentHtmlController.cs" />
+    <Compile Include="Controllers\Admin\AdminFaqController.cs" />
+    <Compile Include="Controllers\Admin\AdminMailingListController.cs" />
+    <Compile Include="Controllers\Admin\BaseAdminController.cs" />
+    <Compile Include="Controllers\Api\BaseEntityReadOnlyWebApiControllerAuthorize.cs" />
+    <Compile Include="Controllers\Api\BaseEntityReadOnlyWebApiController.cs" />
+    <Compile Include="Controllers\Api\BaseEntityWebApiControllerAuthorize.cs" />
+    <Compile Include="Controllers\Api\BaseEntityWebApiController.cs" />
+    <Compile Include="Controllers\Api\BaseWebApiControllerAuthorize.cs" />
+    <Compile Include="Controllers\Api\BaseWebApiController.cs" />
+    <Compile Include="Controllers\Api\ContentHtmlController.cs" />
+    <Compile Include="Controllers\Api\TestController.cs" />
+    <Compile Include="Controllers\BaseControllerAuthorize.cs" />
+    <Compile Include="Controllers\ContentHtmlController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
+    <Compile Include="Controllers\File\BaseFileMetadataControllerAuthorize.cs" />
+    <Compile Include="Controllers\File\BaseFileMetadataReadOnlyControllerAuthorize.cs" />
+    <Compile Include="Controllers\Folder\BaseFolderMetadataControllerAuthorize.cs" />
+    <Compile Include="Controllers\File\BaseJpegMetadataControllerAuthorize.cs" />
+    <Compile Include="Controllers\BaseEntityControllerAuthorize.cs" />
+    <Compile Include="Controllers\Folder\BaseFolderMetadataReadOnlyControllerAuthorize.cs" />
+    <Compile Include="Controllers\File\BaseJpegMetadataReadOnlyControllerAuthorize.cs" />
+    <Compile Include="Controllers\BaseEntityReadOnlyControllerAuthorize.cs" />
+    <Compile Include="Controllers\BaseHomeController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BaseEntityController.cs" />
+    <Compile Include="Controllers\BaseEntityReadOnlyController.cs" />
+    <Compile Include="Controllers\BaseTemplateController.cs" />
+    <Compile Include="Controllers\Api\ContentTextController.cs" />
+    <Compile Include="Controllers\Admin\AdminContentTextController.cs" />
+    <Compile Include="Controllers\Admin\AdminFileManagerController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ContentTextController.cs" />
+    <Compile Include="Controllers\MailingListController.cs" />
+    <Compile Include="Email\EmailMessage.cs" />
+    <Compile Include="Email\EmailService.cs" />
+    <Compile Include="Email\IEmailService.cs" />
+    <Compile Include="Email\SmtpConfiguration.cs" />
+    <Compile Include="Errors\MvcErrorHandler.cs" />
+    <Compile Include="Extensions\DbGeographyExtensions.cs" />
+    <Compile Include="Extensions\DropdownExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\ModelHelperExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Extensions\ViewDataDictionaryExtensions.cs" />
+    <Compile Include="Filters\ETagAttribute.cs" />
+    <Compile Include="Filters\LogActionAttribute.cs" />
+    <Compile Include="Filters\WebApiETagAttribute.cs" />
+    <Compile Include="Filters\WebApiValidateModelAttribute.cs" />
+    <Compile Include="Errors\WebApiExceptionHandler.cs" />
+    <Compile Include="Helpers\AngularHelper.cs" />
+    <Compile Include="Helpers\AngularModelHelper.cs" />
+    <Compile Include="Helpers\AngularNgRepeatHelper.cs" />
+    <Compile Include="Helpers\AngularTemplateHelper.cs" />
+    <Compile Include="Helpers\BootstrapHelper.cs" />
+    <Compile Include="Helpers\CacheHelper.cs" />
+    <Compile Include="Helpers\CryptographyHelper.cs" />
+    <Compile Include="Helpers\DbGeographyConverter.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\GridTag.cs" />
+    <Compile Include="Helpers\HtmlOutputHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\JsonHtmlHelpers.cs" />
+    <Compile Include="Helpers\HtmlTagRegister.cs" />
+    <Compile Include="Helpers\LamdaHelper.cs" />
+    <Compile Include="Helpers\LinqHelper.cs" />
+    <Compile Include="Helpers\NavigationMenuHelper.cs" />
+    <Compile Include="Helpers\ReflectionHelper.cs" />
+    <Compile Include="Helpers\RequestHelper.cs" />
+    <Compile Include="Helpers\SerializationHelper.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Helpers\UIRatingTag.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
+    <Compile Include="Helpers\WebRequestHelper.cs" />
+    <Compile Include="Implementation\Caching\CacheManager.cs" />
+    <Compile Include="Implementation\DTOs\BaseDTO.cs" />
+    <Compile Include="Implementation\DTOs\ContentHtmlDTO.cs" />
+    <Compile Include="Implementation\DTOs\FaqDTO.cs" />
+    <Compile Include="Implementation\DTOs\FileMetadataDTO.cs" />
+    <Compile Include="Implementation\DTOs\FolderMetadataDTO.cs" />
+    <Compile Include="Implementation\DTOs\JpegMetadataDTO.cs" />
+    <Compile Include="Implementation\DTOs\ContentTextDTO.cs" />
+    <Compile Include="Implementation\DTOs\MailingListDTO.cs" />
+    <Compile Include="Implementation\DTOs\WebApiPagedRequestDTO.cs" />
+    <Compile Include="Implementation\Enums\CropType.cs" />
+    <Compile Include="Implementation\Extensions\ControllerExtensions.cs" />
+    <Compile Include="Implementation\Logging\LogFactory.cs" />
+    <Compile Include="Implementation\Logging\Logger.cs" />
+    <Compile Include="Implementation\Model\BaseObjectValidatable.cs" />
+    <Compile Include="Implementation\Model\BaseEntity.cs" />
+    <Compile Include="Implementation\Model\BaseEntityAuditable.cs" />
+    <Compile Include="Implementation\Model\Faq.cs" />
+    <Compile Include="Implementation\Model\MailingListEmail.cs" />
+    <Compile Include="Implementation\Model\MailingList.cs" />
+    <Compile Include="Implementation\Model\Contact.cs" />
+    <Compile Include="Implementation\Model\ContentHTML.cs" />
+    <Compile Include="Implementation\Model\EnumDatasourceAttribute.cs" />
+    <Compile Include="Implementation\Model\ContentText.cs" />
+    <Compile Include="Implementation\Model\LogAction.cs" />
+    <Compile Include="Implementation\Model\User.cs" />
+    <Compile Include="Implementation\Persistance\BaseDbContextTransaction.cs" />
+    <Compile Include="Implementation\Persistance\BaseDropCreateForceDatabaseInitializer.cs" />
+    <Compile Include="Implementation\Repository\BaseRepositoryFactory.cs" />
+    <Compile Include="Implementation\Repository\FileSystemRepositoryFactory.cs" />
+    <Compile Include="Implementation\Repository\File\BaseJpegMetadataRepository.cs" />
+    <Compile Include="Implementation\Repository\File\BaseJpegMetadataReadOnlyRepository.cs" />
+    <Compile Include="Implementation\Repository\File\BaseFileRepository.cs" />
+    <Compile Include="Implementation\Repository\File\BaseFileReadOnlyRepository.cs" />
+    <Compile Include="Implementation\Repository\Folder\BaseFolderRepository.cs" />
+    <Compile Include="Implementation\Repository\Folder\BaseFolderReadOnlyRepository.cs" />
+    <Compile Include="Implementation\Services\BaseEntityBusinessService.cs" />
+    <Compile Include="Implementation\Services\BaseEntityReadOnlyBusinessService.cs" />
+    <Compile Include="Implementation\Services\BaseBusinessService.cs" />
+    <Compile Include="Implementation\Services\FaqService.cs" />
+    <Compile Include="Implementation\Services\MailingListService.cs" />
+    <Compile Include="Implementation\Services\ContentHtmlService.cs" />
+    <Compile Include="Implementation\Services\ContentTextService.cs" />
+    <Compile Include="Implementation\UnitOfWork\BaseAmbientDbContextLocator.cs" />
+    <Compile Include="Implementation\UnitOfWork\BaseAmbientUnitOfWorkSuppressor.cs" />
+    <Compile Include="Implementation\UnitOfWork\BaseDbContextCollection.cs" />
+    <Compile Include="Implementation\UnitOfWork\Scopes\BaseUnitOfWorkScope.cs" />
+    <Compile Include="Implementation\UnitOfWork\Scopes\BaseUnitOfWorkReadOnlyScope.cs" />
+    <Compile Include="Implementation\UnitOfWork\Scopes\BaseUnitOfWorkTransactionalScope.cs" />
+    <Compile Include="Implementation\UnitOfWork\BaseUnitOfWorkScopeFactory.cs" />
+    <Compile Include="Implementation\Validation\ServiceValidationErrors.cs" />
+    <Compile Include="Implementation\Validation\EntityValidationErrors.cs" />
+    <Compile Include="Implementation\Validation\DatabaseValidationErrors.cs" />
+    <Compile Include="Implementation\Validation\GeneralError.cs" />
+    <Compile Include="Implementation\Validation\PropertyError.cs" />
+    <Compile Include="Implementation\Validation\ValidationErrors.cs" />
+    <Compile Include="Implementation\DTOs\WebApiPagedResponseDTO.cs" />
+    <Compile Include="Infrastructure\EFModelBinderProvider.cs" />
+    <Compile Include="Infrastructure\eTagHelper.cs" />
+    <Compile Include="Infrastructure\ffMpeg.cs" />
+    <Compile Include="Infrastructure\FixedTokenBiner.cs" />
+    <Compile Include="Infrastructure\HangfireConfig.cs" />
+    <Compile Include="Implementation\Model\JpegMetadata.cs" />
+    <Compile Include="Infrastructure\LayoutInjectorAttribute.cs" />
+    <Compile Include="Infrastructure\RangeRequestFileHandler.cs" />
+    <Compile Include="Infrastructure\RDDBViewEngine.cs" />
+    <Compile Include="Infrastructure\UrlSlugger.cs" />
+    <Compile Include="Infrastructure\WebApiAssemblyResolver.cs" />
+    <Compile Include="Interfaces\Automapper\IMapFrom.cs" />
+    <Compile Include="Interfaces\Automapper\IMapTo.cs" />
+    <Compile Include="Interfaces\Automapper\IHaveCustomMappings.cs" />
+    <Compile Include="Interfaces\Logging\ILogFactory.cs" />
+    <Compile Include="Interfaces\Logging\ILogger.cs" />
+    <Compile Include="Infrastructure\CurrentUser.cs" />
+    <Compile Include="Interfaces\Model\IBaseObjectValidatable.cs" />
+    <Compile Include="Interfaces\Model\ICurrentUser.cs" />
+    <Compile Include="Interfaces\Persistance\IBaseDbContextTransaction.cs" />
+    <Compile Include="Interfaces\Repository\IBaseJpegMetadataRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseJpegMetadataReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseFolderRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseFolderReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseFileRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseFileReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseRepositoryFactory.cs" />
+    <Compile Include="Interfaces\Services\IBaseEntityReadOnlyBusinessService.cs" />
+    <Compile Include="Interfaces\Services\IBaseEntityBusinessService.cs" />
+    <Compile Include="Interfaces\Services\IBaseBusinessService.cs" />
+    <Compile Include="Interfaces\Services\IFaqService.cs" />
+    <Compile Include="Interfaces\Services\IMailingListService.cs" />
+    <Compile Include="Interfaces\Services\IContentHtmlService.cs" />
+    <Compile Include="Interfaces\Services\IContentTextService.cs" />
+    <Compile Include="Interfaces\Repository\IFileSystemRepositoryFactory.cs" />
+    <Compile Include="Interfaces\UnitOfWork\BaseUnitOfWorkScopeOption.cs" />
+    <Compile Include="Interfaces\Model\IBaseEntity.cs" />
+    <Compile Include="Interfaces\Model\IBaseEntityAuditable.cs" />
+    <Compile Include="Interfaces\Persistance\IBaseDbContext.cs" />
+    <Compile Include="Interfaces\Persistance\IBaseDbContextFactory.cs" />
+    <Compile Include="Interfaces\Repository\IBaseReadOnlyRepository.cs" />
+    <Compile Include="Interfaces\Repository\IBaseRepository.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IBaseAmbientDbContextLocator.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IBaseUnitOfWorkContextCollection.cs" />
+    <Compile Include="Interfaces\UnitOfWork\Scopes\IBaseUnitOfWorkReadOnlyScope.cs" />
+    <Compile Include="Interfaces\UnitOfWork\Scopes\IBaseUnitOfWorkScope.cs" />
+    <Compile Include="Interfaces\UnitOfWork\Scopes\IBaseUnitOfWorkTransactionalScope.cs" />
+    <Compile Include="Interfaces\UnitOfWork\IBaseUnitOfWorkScopeFactory.cs" />
+    <Compile Include="Implementation\Persistance\BaseDbConfiguration.cs" />
+    <Compile Include="Implementation\Model\BaseApplicationUser.cs" />
+    <Compile Include="Implementation\Persistance\BaseIdentityDbContext.cs" />
+    <Compile Include="Interfaces\Validation\IBaseError.cs" />
+    <Compile Include="Interfaces\Validation\IValidationErrors.cs" />
+    <Compile Include="Json\DateTimeZoneConverter.cs" />
+    <Compile Include="ModelMetadata\MultilineTextAttribute.cs" />
+    <Compile Include="ModelMetadata\ExtensibleModelMetadataProvider.cs" />
+    <Compile Include="ModelMetadata\Filters\LabelConventionFilter.cs" />
+    <Compile Include="ModelMetadata\Filters\ReadOnlyTemplateSelectorFilter.cs" />
+    <Compile Include="ModelMetadata\Filters\HtmlByNameFilter.cs" />
+    <Compile Include="ModelMetadata\Filters\TextAreaByNameFilter.cs" />
+    <Compile Include="ModelMetadata\Filters\UserIDDropDownByNameFilter.cs" />
+    <Compile Include="ModelMetadata\Filters\WatermarkConventionFilter.cs" />
+    <Compile Include="ModelMetadata\IModelMetadataFilter.cs" />
+    <Compile Include="ModelMetadata\DropdownAttribute.cs" />
+    <Compile Include="ModelMetadata\ReadOnlyHiddenInputAttribute.cs" />
+    <Compile Include="Ninject\NinjectModelMetadataModule.cs" />
+    <Compile Include="ModelMetadata\RenderAttribute.cs" />
+    <Compile Include="Ninject\NinjectConfig.cs" />
+    <Compile Include="Ninject\NinjectConventionsModule.cs" />
+    <Compile Include="Ninject\NinjectMVCModule.cs" />
+    <Compile Include="Ninject\NinjectAutomapperModule.cs" />
+    <Compile Include="Routing\CustomDirectRouteProvider.cs" />
+    <Compile Include="Routing\MvcDashedRouteHandler.cs" />
+    <Compile Include="Routing\LowercaseDashedRoute.cs" />
+    <Compile Include="Routing\WebApiCustomDirectRouteProvider.cs" />
+    <Compile Include="Routing\ContentRouteHandler.cs" />
+    <Compile Include="Routing\WebApiHyphenatedRouteController.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Tasks\IRunAfterEachRequest.cs" />
+    <Compile Include="Tasks\IRunAtInit.cs" />
+    <Compile Include="Tasks\IRunAtOwinStartup.cs" />
+    <Compile Include="Tasks\IRunAtStartup.cs" />
+    <Compile Include="Tasks\IRunOnEachRequest.cs" />
+    <Compile Include="Tasks\IRunOnError.cs" />
+    <Compile Include="Ninject\NinjectTaskModule.cs" />
+    <Compile Include="Tasks\TaskRunner.cs" />
+    <Compile Include="Infrastructure\TransactionPerRequest.cs" />
+    <Compile Include="Testing\Isolated.cs" />
+    <Compile Include="Testing\TestDbAsyncQueryProvider.cs" />
+    <Compile Include="Testing\TestHelpers.cs" />
+    <Compile Include="Infrastructure\DbContextInitializer.cs" />
+    <Compile Include="Extensions\HttpContextExtensions.cs" />
+    <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Implementation\Repository\EntityFramework\BaseEFReadOnlyRepository.cs" />
+    <Compile Include="Implementation\Repository\EntityFramework\BaseEFRepository.cs" />
+    <Compile Include="Extensions\AutomapperExtensions.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Infrastructure\PaginatedList.cs" />
+    <Compile Include="Helpers\TaskHelper.cs" />
+    <Compile Include="Validation\FileSizeAttribute.cs" />
+    <Compile Include="Validation\FileTypesAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
