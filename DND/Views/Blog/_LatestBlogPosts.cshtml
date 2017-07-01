@@ -7,10 +7,16 @@
             {
                 <div class="card margin-bottom-10" style="max-width:550px">
                     @{
+                        bool isVideo = false;
+                        bool isImage = false;
+                        bool isText = false;
                         var mainPhoto = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + post.Album).MainPhotoOrVideoOrText();
-                        var isVideo = mainPhoto.IsVideo();
-                        var isImage = mainPhoto.IsImage();
-                        var isText = mainPhoto.IsText();
+                        if (mainPhoto != null)
+                        {
+                            isVideo = mainPhoto.IsVideo();
+                            isImage = mainPhoto.IsImage();
+                            isText = mainPhoto.IsText();
+                        }
                     }
 
                     @if (isVideo)

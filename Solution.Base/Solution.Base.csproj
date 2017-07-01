@@ -233,6 +233,8 @@
     <Compile Include="Controllers\Api\BaseWebApiControllerAuthorize.cs" />
     <Compile Include="Controllers\Api\BaseWebApiController.cs" />
     <Compile Include="Controllers\Api\ContentHtmlController.cs" />
+    <Compile Include="Controllers\Api\FaqController.cs" />
+    <Compile Include="Controllers\Api\MailingListController.cs" />
     <Compile Include="Controllers\Api\TestController.cs" />
     <Compile Include="Controllers\BaseControllerAuthorize.cs" />
     <Compile Include="Controllers\ContentHtmlController.cs" />

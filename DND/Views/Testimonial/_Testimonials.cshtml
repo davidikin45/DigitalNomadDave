@@ -10,7 +10,7 @@
 @foreach (TestimonialDTO testimonial in Model.Testimonials)
 {
     <div class="card card-inverse @if (i % 2 == 0) {<text>card-info</text>}else{<text>card-primary</text>} mb-3 text-center">
-        @if (!string.IsNullOrEmpty(testimonial.File))
+        @if (!string.IsNullOrEmpty(testimonial.File) && Server.FileExists(Folders.Testimonials, testimonial.File))
         {
             <img class="card-img-top rounded-circle mt-3 mx-auto img-shadow" style="width:100px" src="@Server.GetFileInfo(Folders.Testimonials,testimonial.File).VirtualPathSlug(300)" alt="@testimonial.Source">
         }

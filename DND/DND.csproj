@@ -48,6 +48,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <DocumentationFile>bin\DND.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
@@ -238,6 +239,9 @@
     <Compile Include="Controllers\Admin\AdminMetadataController.cs" />
     <Compile Include="Controllers\Admin\AdminLocationController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Api\AuthorController.cs" />
+    <Compile Include="Controllers\Api\TestimonialController.cs" />
+    <Compile Include="Controllers\Api\ProjectController.cs" />
     <Compile Include="Controllers\Api\LocaleController.cs" />
     <Compile Include="Controllers\Api\MarketController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
@@ -803,6 +807,8 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="images\airbnb %28Mobile%29.png" />
     <Content Include="images\bg.JPG" />
+    <Content Include="images\github.jpg" />
+    <Content Include="images\slack.jpg" />
     <Content Include="initial-content\Affiliates.html" />
     <Content Include="initial-content\Contact.html" />
     <Content Include="initial-content\SidebarAbout.html" />
@@ -819,6 +825,7 @@
     </Content>
     <Content Include="uploads\advertising\delete.txt" />
     <Content Include="uploads\carousel\delete.txt" />
+    <Content Include="uploads\gallery\delete.txt" />
     <Content Include="uploads\parellax\delete.txt" />
     <Content Include="uploads\testimonials\delete.txt" />
     <Content Include="uploads\social-media\me.jpg" />
@@ -1123,7 +1130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="FileManager\tmp\" />
-    <Folder Include="uploads\gallery\australia\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

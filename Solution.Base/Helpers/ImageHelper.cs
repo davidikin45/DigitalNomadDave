@@ -202,20 +202,32 @@ namespace Solution.Base.Helpers
 
         public static FileInfo MainPhoto(this DirectoryInfo directoryInfo)
         {
-            var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg");
-            return repository.GetMain();
+            if(directoryInfo != null)
+            {
+                var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg");
+                return repository.GetMain();
+            }
+            return null;           
         }
 
         public static FileInfo MainPhotoOrVideo(this DirectoryInfo directoryInfo)
         {
-            var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg", ".mp4");
-            return repository.GetMain();
+            if (directoryInfo != null)
+            {
+                var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg", ".mp4");
+                return repository.GetMain();
+            }
+            return null;
         }
 
         public static FileInfo MainPhotoOrVideoOrText(this DirectoryInfo directoryInfo)
         {
-            var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg", ".mp4",".txt");
-            return repository.GetMain();
+            if (directoryInfo != null)
+            {
+                var repository = new BaseFileRepository(directoryInfo.FullName, true, "*.*", default(CancellationToken), ".jpg", ".jpeg", ".mp4",".txt");
+                return repository.GetMain();
+            }
+            return null;
         }
     }
 

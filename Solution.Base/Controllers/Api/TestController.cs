@@ -10,7 +10,7 @@ using System.Web.Http;
 namespace Solution.Base.Controllers.Api
 {
     [RoutePrefix("api/test")]
-    public class TestController : BaseWebApiController
+    public class TestController : BaseWebApiControllerAuthorize
     {
         [Route("checkid/{id}")]
         [HttpGet]

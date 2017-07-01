@@ -11,7 +11,10 @@
                 @Html.Raw(@"<div class=""card-deck"">")
             }
             <div class="card mb-4">
-                <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects,project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects,project.File).VirtualPathSlug(800,0))" alt="@project.Name"></a>
+                @if (!string.IsNullOrEmpty(project.File) && Server.FileExists(Folders.Projects, project.File))
+                {
+                    <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 0))" alt="@project.Name"></a>
+                }
                 <div class="card-block">
                     @if (string.IsNullOrEmpty(project.Link))
                     {
@@ -19,7 +22,7 @@
                     }
                     else
                     {
-                        <h4 class="card-title"><a href="@project.Link" title="@project.Name">@project.Name</a></h4>
+                        <h4 class="card-title"><a target="_blank" href="@project.Link" title="@project.Name">@project.Name</a></h4>
                     }
                     <p class="card-text">@project.DescriptionText</p>
                 </div>

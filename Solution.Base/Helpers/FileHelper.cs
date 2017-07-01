@@ -42,6 +42,11 @@ namespace Solution.Base.Helpers
             return File.Exists(path);
         }
 
+        public static bool FileExists(this HttpServerUtilityBase server, string folderId, string path)
+        {
+            return FileExists(server, server.GetFolderPhysicalPathById(folderId) + path);
+        }
+
         public static FileInfo GetFileInfo(this HttpServerUtilityBase server, string folderId, string path)
         {
             return server.GetFileInfo(server.GetFolderPhysicalPathById(folderId) + path);
