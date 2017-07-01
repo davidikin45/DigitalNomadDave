@@ -13,7 +13,7 @@
             <div class="card mb-4">
                 @if (!string.IsNullOrEmpty(project.File) && Server.FileExists(Folders.Projects, project.File))
                 {
-                    <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 0))" alt="@project.Name"></a>
+                    <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 500))" alt="@project.Name"></a>
                 }
                 <div class="card-block">
                     @if (string.IsNullOrEmpty(project.Link))
