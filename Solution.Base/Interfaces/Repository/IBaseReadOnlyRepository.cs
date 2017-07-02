@@ -29,6 +29,24 @@ namespace Solution.Base.Interfaces.Repository
             params Expression<Func<TEntity, Object>>[] includeProperties)
             ;
 
+        IEnumerable<TEntity> Search(
+             string search = "",
+           Expression<Func<TEntity, bool>> filter = null,
+           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+           int? skip = null,
+           int? take = null,
+           params Expression<Func<TEntity, Object>>[] includeProperties)
+           ;
+
+        Task<IEnumerable<TEntity>> SearchAsync(
+            string search = "",
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            int? skip = null,
+            int? take = null,
+            params Expression<Func<TEntity, Object>>[] includeProperties)
+            ;
+
         IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
@@ -78,6 +96,13 @@ namespace Solution.Base.Interfaces.Repository
 
         Task<int> GetCountAsync(Expression<Func<TEntity, bool>> filter = null)
             ;
+
+        int GetSearchCount(string search = "", Expression<Func<TEntity, bool>> filter = null)
+          ;
+
+        Task<int> GetSearchCountAsync(string search = "", Expression<Func<TEntity, bool>> filter = null)
+            ;
+
 
         bool GetExists(Expression<Func<TEntity, bool>> filter = null)
             ;

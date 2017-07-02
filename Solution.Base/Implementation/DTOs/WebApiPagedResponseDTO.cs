@@ -42,6 +42,9 @@ namespace Solution.Base.Implementation.DTOs
             }
         }
 
+        public string Search
+        { get; set; }
+
         public string OrderColumn
         { get; set; }
 

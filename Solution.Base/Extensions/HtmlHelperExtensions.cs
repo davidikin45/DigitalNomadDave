@@ -118,7 +118,7 @@ namespace Solution.Base.Extensions
 
                 if (enableSort)
                 {
-                    link = html.ActionLink(linkText, "Index", new { page = html.ViewBag.Page, pageSize = html.ViewBag.PageSize, orderColumn = prop.PropertyName, orderType = orderType }).ToString();
+                    link = html.ActionLink(linkText, "Index", new { page = html.ViewBag.Page, pageSize = html.ViewBag.PageSize, search = html.ViewBag.Search, orderColumn = prop.PropertyName, orderType = orderType }).ToString();
                 }
                 else
                 {
@@ -216,6 +216,26 @@ namespace Solution.Base.Extensions
             table.InnerHtml += tbody.ToString();
 
             return new HtmlString(table.ToString());
+        }
+
+        public static string Controller(this HtmlHelper htmlHelper)
+        {
+            var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+
+            if (routeValues.ContainsKey("controller"))
+                return (string)routeValues["controller"];
+
+            return string.Empty;
+        }
+
+        public static string Action(this HtmlHelper htmlHelper)
+        {
+            var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+
+            if (routeValues.ContainsKey("action"))
+                return (string)routeValues["action"];
+
+            return string.Empty;
         }
 
         public static IHtmlString BootstrapPager(this HtmlHelper html, int currentPageIndex, Func<int, string> action, int totalItems, int pageSize = 10, int numberOfLinks = 5)

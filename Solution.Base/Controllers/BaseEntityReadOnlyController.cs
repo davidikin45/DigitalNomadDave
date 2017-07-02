@@ -56,15 +56,15 @@ namespace Solution.Base.Controllers
 
         // GET: Default
         [Route("")]
-        public virtual async Task<ActionResult> Index(int page = 1, int pageSize = 10, string orderColumn = nameof(IBaseEntity.Id), string orderType = OrderByType.Descending)
+        public virtual async Task<ActionResult> Index(int page = 1, int pageSize = 10, string orderColumn = nameof(IBaseEntity.Id), string orderType = OrderByType.Descending, string search = "")
         {
 
             var cts = TaskHelper.CreateChildCancellationTokenSource(HttpContext.Response.ClientDisconnectedToken);
                   
             try
             {
-                var dataTask = Service.GetAllAsync(cts.Token, LamdaHelper.GetOrderBy<TDto>(orderColumn, orderType), page - 1, pageSize, null);
-                var totalTask = Service.GetCountAsync(cts.Token);
+                var dataTask = Service.SearchAsync(cts.Token, search, null, LamdaHelper.GetOrderBy<TDto>(orderColumn, orderType), page - 1, pageSize, null);
+                var totalTask = Service.GetSearchCountAsync(cts.Token,search);
 
                 await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
 
@@ -78,10 +78,11 @@ namespace Solution.Base.Controllers
                     Records = total,
                     Rows = data.ToList(),
                     OrderColumn = orderColumn,
-                    OrderType = orderType
-
+                    OrderType = orderType,
+                    Search = search
                 };
 
+                ViewBag.Search = search;
                 ViewBag.Page = page;
                 ViewBag.PageSize = pageSize;
                 ViewBag.OrderColumn = orderColumn;
@@ -98,7 +99,7 @@ namespace Solution.Base.Controllers
         }
 
         [ChildActionOnly]
-        public virtual ActionResult ViewAllChild(int page = 1, int pageSize = 10, string orderColumn = nameof(IBaseEntity.Id), string orderType = OrderByType.Descending)
+        public virtual ActionResult ViewAllChild(int page = 1, int pageSize = 10, string orderColumn = nameof(IBaseEntity.Id), string orderType = OrderByType.Descending, string search = "")
         { 
             var cts = TaskHelper.CreateChildCancellationTokenSource(HttpContext.Response.ClientDisconnectedToken);
         
@@ -108,8 +109,8 @@ namespace Solution.Base.Controllers
                 int total = 0;
 
                 var result = Task.Run(async () => {
-                    var dataTask = Service.GetAllAsync(cts.Token, LamdaHelper.GetOrderBy<TDto>(orderColumn, orderType), page - 1, pageSize, null);
-                    var totalTask = Service.GetCountAsync(cts.Token);
+                    var dataTask = Service.SearchAsync(cts.Token, search, null, LamdaHelper.GetOrderBy<TDto>(orderColumn, orderType), page - 1, pageSize, null);
+                    var totalTask = Service.GetSearchCountAsync(cts.Token, search);
 
                     await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
 
@@ -126,9 +127,11 @@ namespace Solution.Base.Controllers
                     Records = total,
                     Rows = data.ToList(),
                     OrderColumn = orderColumn,
-                    OrderType = orderType
+                    OrderType = orderType,
+                    Search= search
                 };
 
+                ViewBag.Search = search;
                 ViewBag.Page = page;
                 ViewBag.PageSize = pageSize;
                 ViewBag.OrderColumn = orderColumn;

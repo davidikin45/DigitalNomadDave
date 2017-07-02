@@ -28,6 +28,25 @@ namespace Solution.Base.Interfaces.Services
             params Expression<Func<TDto, Object>>[] includeProperties)
             ;
 
+        IEnumerable<TDto> Search(
+         string search = "",
+         Expression<Func<TDto, bool>> filter = null,
+         Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
+         int? pageNo = null,
+         int? pageSize = null,
+         params Expression<Func<TDto, Object>>[] includeProperties)
+         ;
+
+        Task<IEnumerable<TDto>> SearchAsync(
+            CancellationToken cancellationToken,
+            string search = "",
+            Expression<Func<TDto, bool>> filter = null,
+            Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
+            int? pageNo = null,
+            int? pageSize = null,
+            params Expression<Func<TDto, Object>>[] includeProperties)
+            ;
+
         IEnumerable<TDto> Get(
             Expression<Func<TDto, bool>> filter = null,
             Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
@@ -84,6 +103,17 @@ namespace Solution.Base.Interfaces.Services
             Expression<Func<TDto, bool>> filter = null
             )
             ;
+
+
+        int GetSearchCount(string search = "", Expression<Func<TDto, bool>> filter = null)
+            ;
+
+        Task<int> GetSearchCountAsync(
+          CancellationToken cancellationToken,
+          string search = "",
+          Expression<Func<TDto, bool>> filter = null
+          )
+          ;
 
         bool Exists(Expression<Func<TDto, bool>> filter = null)
             ;

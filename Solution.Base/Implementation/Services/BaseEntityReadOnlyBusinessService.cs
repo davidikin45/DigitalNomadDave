@@ -105,6 +105,55 @@ namespace Solution.Base.Implementation.Services
             }
         }
 
+        public virtual IEnumerable<TDto> Search(
+       string search = "",
+       Expression<Func<TDto, bool>> filter = null,
+       Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
+       int? pageNo = null,
+       int? pageSize = null,
+       params Expression<Func<TDto, Object>>[] includeProperties)
+        {
+            var filterConverted = GetMappedSelector<TDto, TEntity, bool>(filter);
+            var orderByConverted = GetMappedOrderBy<TDto, TEntity>(orderBy);
+            var includesConverted = GetMappedIncludes<TDto, TEntity>(includeProperties);
+
+            IEnumerable<TDto> dtoList;
+            using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly())
+            {
+
+                var entityList = unitOfWork.Repository<TContext, TEntity>().Search(search, filterConverted, orderByConverted, pageNo * pageSize, pageSize, includesConverted);
+
+                dtoList = entityList.ToList().Select(Mapper.Map<TEntity, TDto>);
+
+                return dtoList;
+            }
+
+        }
+
+        public virtual async Task<IEnumerable<TDto>> SearchAsync(
+            CancellationToken cancellationToken,
+             string search = "",
+            Expression<Func<TDto, bool>> filter = null,
+            Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
+            int? pageNo = null,
+            int? pageSize = null,
+            params Expression<Func<TDto, Object>>[] includeProperties)
+        {
+            var filterConverted = GetMappedSelector<TDto, TEntity, bool>(filter);
+            var orderByConverted = GetMappedOrderBy<TDto, TEntity>(orderBy);
+            var includesConverted = GetMappedIncludes<TDto, TEntity>(includeProperties);
+
+            IEnumerable<TDto> dtoList;
+            using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
+            {
+
+                var entityList = await unitOfWork.Repository<TContext, TEntity>().SearchAsync(search, filterConverted, orderByConverted, pageNo * pageSize, pageSize, includesConverted);
+                dtoList = entityList.ToList().Select(Mapper.Map<TEntity, TDto>);
+
+                return dtoList;
+            }
+        }
+
         public virtual IEnumerable<TDto> Get(
             Expression<Func<TDto, bool>> filter = null,
             Expression<Func<IQueryable<TDto>, IOrderedQueryable<TDto>>> orderBy = null,
@@ -262,6 +311,35 @@ namespace Solution.Base.Implementation.Services
             using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
             {
                 count = await unitOfWork.Repository<TContext, TEntity>().GetCountAsync(filterConverted);
+            }
+            return count;
+        }
+
+        public virtual int GetSearchCount(
+            string search = "",
+           Expression<Func<TDto, bool>> filter = null)
+        {
+            var filterConverted = GetMappedSelector<TDto, TEntity, bool>(filter);
+
+            int count = 0;
+            using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly())
+            {
+                count = unitOfWork.Repository<TContext, TEntity>().GetSearchCount(search, filterConverted);
+            }
+            return count;
+        }
+
+        public virtual async Task<int> GetSearchCountAsync(
+            CancellationToken cancellationToken,
+             string search = "",
+            Expression<Func<TDto, bool>> filter = null)
+        {
+            var filterConverted = GetMappedSelector<TDto, TEntity, bool>(filter);
+
+            int count = 0;
+            using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
+            {
+                count = await unitOfWork.Repository<TContext, TEntity>().GetSearchCountAsync(search, filterConverted);
             }
             return count;
         }

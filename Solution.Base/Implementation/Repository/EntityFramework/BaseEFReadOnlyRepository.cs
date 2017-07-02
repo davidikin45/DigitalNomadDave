@@ -11,6 +11,7 @@ using Solution.Base.Interfaces.Persistance;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Threading;
+using System.Reflection;
 
 namespace Solution.Base.Implementation.Repository.EntityFramework
 {
@@ -32,6 +33,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
         }
 
         protected virtual IQueryable<TEntity> GetQueryable(
+            string search = "",
             Expression<Func<TEntity, bool>> filter = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             int? skip = null,
@@ -48,6 +50,11 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
             if (filter != null)
             {
                 query = query.Where(filter);
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = CreateSearchQuery(query, search);
             }
 
             if (includeProperties != null)
@@ -76,13 +83,48 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
             return query;
         }
 
+        protected virtual IQueryable<TEntity> CreateSearchQuery(IQueryable<TEntity> query, string value)
+        {
+            List<Expression> expressions = new List<Expression>();
+
+            ParameterExpression parameter = Expression.Parameter(typeof(TEntity), "p");
+
+            MethodInfo contains_method = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+
+            foreach (PropertyInfo prop in typeof(TEntity).GetProperties().Where(x => x.PropertyType == typeof(string)))
+            {
+                MemberExpression member_expression = Expression.PropertyOrField(parameter, prop.Name);
+
+                ConstantExpression value_expression = Expression.Constant(value, typeof(string));
+
+                MethodCallExpression contains_expression = Expression.Call(member_expression, contains_method, value_expression);
+
+                expressions.Add(contains_expression);
+            }
+
+            if (expressions.Count == 0)
+                return query;
+
+            Expression or_expression = expressions[0];
+
+            for (int i = 1; i < expressions.Count; i++)
+            {
+                or_expression = Expression.OrElse(or_expression, expressions[i]);
+            }
+
+            Expression<Func<TEntity, bool>> expression = Expression.Lambda<Func<TEntity, bool>>(
+                or_expression, parameter);
+
+            return query.Where(expression);
+        }
+
         public virtual IEnumerable<TEntity> GetAll(
           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
           int? skip = null,
           int? take = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return GetQueryable(null, orderBy, skip, take, includeProperties).ToList();
+            return GetQueryable(null, null, orderBy, skip, take, includeProperties).ToList();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync(
@@ -92,7 +134,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
             int? take = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return await GetQueryable(null, orderBy, skip, take, includeProperties).ToListAsync(_cancellationToken);
+            return await GetQueryable(null, null, orderBy, skip, take, includeProperties).ToListAsync(_cancellationToken);
         }
 
         public virtual IEnumerable<TEntity> SQLQuery(string query, params object[] paramaters)
@@ -113,7 +155,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
             int? take = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return GetQueryable(filter, orderBy, skip, take, includeProperties).ToList();
+            return GetQueryable(null, filter, orderBy, skip, take, includeProperties).ToList();
         }
 
         public virtual async Task<IEnumerable<TEntity>> GetAsync(
@@ -124,7 +166,31 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
             int? take = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return await GetQueryable(filter, orderBy, skip, take, includeProperties).ToListAsync(_cancellationToken);
+            return await GetQueryable(null, filter, orderBy, skip, take, includeProperties).ToListAsync(_cancellationToken);
+        }
+
+        public virtual IEnumerable<TEntity> Search(
+            string search = "",
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            //  string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+          params Expression<Func<TEntity, Object>>[] includeProperties)
+        {
+            return GetQueryable(search, filter, orderBy, skip, take, includeProperties).ToList();
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> SearchAsync(
+             string search = "",
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            //string includeProperties = null,
+            int? skip = null,
+            int? take = null,
+          params Expression<Func<TEntity, Object>>[] includeProperties)
+        {
+            return await GetQueryable(search, filter, orderBy, skip, take, includeProperties).ToListAsync(_cancellationToken);
         }
 
         public virtual TEntity GetOne(
@@ -132,7 +198,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
           // string includeProperties = "",
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return GetQueryable(filter, null, null, null, includeProperties).SingleOrDefault();
+            return GetQueryable(null, filter, null, null, null, includeProperties).SingleOrDefault();
         }
 
         public virtual async Task<TEntity> GetOneAsync(
@@ -140,7 +206,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
           // string includeProperties = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return await GetQueryable(filter, null, null, null, includeProperties).SingleOrDefaultAsync(_cancellationToken);
+            return await GetQueryable(null, filter, null, null, null, includeProperties).SingleOrDefaultAsync(_cancellationToken);
         }
 
         public virtual TEntity GetFirst(
@@ -149,7 +215,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
           //string includeProperties = "",
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return GetQueryable(filter, orderBy, null, null, includeProperties).FirstOrDefault();
+            return GetQueryable(null, filter, orderBy, null, null, includeProperties).FirstOrDefault();
         }
 
         public virtual async Task<TEntity> GetFirstAsync(
@@ -158,7 +224,7 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
           // string includeProperties = null,
           params Expression<Func<TEntity, Object>>[] includeProperties)
         {
-            return await GetQueryable(filter, orderBy, null, null, includeProperties).FirstOrDefaultAsync(_cancellationToken);
+            return await GetQueryable(null, filter, orderBy, null, null, includeProperties).FirstOrDefaultAsync(_cancellationToken);
         }
 
         public virtual TEntity GetById(object id)
@@ -168,27 +234,37 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
 
         public async virtual Task<TEntity> GetByIdAsync(object id)
         {
-            return await GetQueryable(x => x.Id.ToString() == id.ToString(), null, null).SingleOrDefaultAsync(_cancellationToken);
+            return await GetQueryable(null, x => x.Id.ToString() == id.ToString(), null, null).SingleOrDefaultAsync(_cancellationToken);
         }
 
         public virtual int GetCount(Expression<Func<TEntity, bool>> filter = null)
         {
-            return GetQueryable(filter).Count();
+            return GetQueryable(null, filter).Count();
         }
 
         public virtual Task<int> GetCountAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            return GetQueryable(filter).CountAsync(_cancellationToken);
+            return GetQueryable(null, filter).CountAsync(_cancellationToken);
+        }
+
+        public virtual int GetSearchCount(string search = "", Expression<Func<TEntity, bool>> filter = null)
+        {
+            return GetQueryable(search, filter).Count();
+        }
+
+        public virtual Task<int> GetSearchCountAsync(string search = "", Expression<Func<TEntity, bool>> filter = null)
+        {
+            return GetQueryable(search, filter).CountAsync(_cancellationToken);
         }
 
         public virtual bool GetExists(Expression<Func<TEntity, bool>> filter = null)
         {
-            return GetQueryable(filter).Any();
+            return GetQueryable(null, filter).Any();
         }
 
         public virtual Task<bool> GetExistsAsync(Expression<Func<TEntity, bool>> filter = null)
         {
-            return GetQueryable(filter).AnyAsync(_cancellationToken);
+            return GetQueryable(null, filter).AnyAsync(_cancellationToken);
         }
     }
 }
