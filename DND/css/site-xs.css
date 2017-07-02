@@ -538,7 +538,7 @@ ng-map {
 }
 
 .card-spacer-top {
-    margin-top: 3px;
+    margin-top: 10px;
 }
 
 .card-spacer {
@@ -790,6 +790,14 @@ a.shadow img, img.shadow {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position:relative;
+}
+
+.parallax-caption {
+    color: white;
+    right: 20px;
+    bottom: 10px;
+    position: absolute;
 }
 
 .full-width-height{
