@@ -32,4 +32,5 @@ This project is licensed under the MIT License
 
 * [Pride Parrot](http://www.prideparrot.com)
 * [Mehdi El Gueddari](http://mehdi.me/ambient-dbcontext-in-ef6/)
-
+* [Favicon.io](https://favicon.io/)
+* [Favic-o-matic](http://www.favicomatic.com/)
