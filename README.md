@@ -26,9 +26,7 @@ A custom built Content Management System using Bootstrap 4, C# MVC 5 and Web API
 
 ## License
 
-MIT
-
-see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
