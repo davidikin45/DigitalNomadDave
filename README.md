@@ -13,7 +13,7 @@ A custom built Content Management System using Bootstrap 4, C# MVC 5 and Web API
 * [Bootstrap 4](https://v4-alpha.getbootstrap.com/) - responsive HTML, CSS, JS framework
 * [Angular](https://angular.io/) - Google JS framework
 * [Automapper](http://automapper.org/) - Convention based object-object mapper
-* [Entity Framework](https://msdn.microsoft.com/en-us/library/aa937723(v=vs.113).aspx) - Microdoft ORM framework
+* [Entity Framework](https://msdn.microsoft.com/en-us/library/aa937723(v=vs.113).aspx) - Microsoft ORM framework
 * [MongoDB](https://www.mongodb.com) - NoSQL database
 * [NLog](http://nlog-project.org/) - Logging
 * [Ninject](http://www.ninject.org/) - Dependency injector for .NET
