@@ -62,7 +62,7 @@ namespace Solution.Base.Controllers
 
         // GET: Default
         [Route("")]
-        public virtual async Task<ActionResult> Index(int page = 1, int pageSize = 10, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending)
+        public virtual async Task<ActionResult> Index(int page = 1, int pageSize = 10, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending, string search = "")
         {
 
             var cts = TaskHelper.CreateChildCancellationTokenSource(HttpContext.Response.ClientDisconnectedToken);
@@ -70,8 +70,8 @@ namespace Solution.Base.Controllers
             try
             {
                 var repository = FileSystemRepositoryFactory.CreateFileRepositoryReadOnly(cts.Token, PhysicalPath, IncludeSubDirectories);
-                var dataTask = repository.GetAllAsync(LamdaHelper.GetOrderByFunc<FileInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
-                var totalTask = repository.GetCountAsync(null);
+                var dataTask = repository.SearchAsync(search, null, LamdaHelper.GetOrderByFunc<FileInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
+                var totalTask = repository.GetSearchCountAsync(search, null);
 
                 await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
 
@@ -92,9 +92,11 @@ namespace Solution.Base.Controllers
                     Records = total,
                     Rows = rows,
                     OrderColumn = orderColumn,
-                    OrderType = orderType
+                    OrderType = orderType,
+                    Search = search
                 };
 
+                ViewBag.Search = search;
                 ViewBag.Page = page;
                 ViewBag.PageSize = pageSize;
                 ViewBag.OrderColumn = orderColumn;

@@ -37,6 +37,22 @@ namespace Solution.Base.Interfaces.Repository
            int? take = null)
            ;
 
+        IEnumerable<DirectoryInfo> Search(
+            string search = "",
+           Expression<Func<DirectoryInfo, bool>> filter = null,
+           Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+           ;
+
+        Task<IEnumerable<DirectoryInfo>> SearchAsync(
+             string search = "",
+           Expression<Func<DirectoryInfo, bool>> filter = null,
+           Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+           ;
+
         DirectoryInfo GetOne(
             Expression<Func<DirectoryInfo, bool>> filter = null)
             ;
@@ -65,6 +81,12 @@ namespace Solution.Base.Interfaces.Repository
             ;
 
         Task<int> GetCountAsync(Expression<Func<DirectoryInfo, bool>> filter = null)
+           ;
+
+        int GetSearchCount(string search= "", Expression<Func<DirectoryInfo, bool>> filter = null)
+          ;
+
+        Task<int> GetSearchCountAsync(string search = "", Expression<Func<DirectoryInfo, bool>> filter = null)
            ;
 
         bool GetExists(Expression<Func<DirectoryInfo, bool>> filter = null)

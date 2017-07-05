@@ -38,6 +38,22 @@ namespace Solution.Base.Interfaces.Repository
            int? take = null)
            ;
 
+        IEnumerable<JpegMetadata> MetadataSearch(
+           string search= "",
+           Expression<Func<FileInfo, bool>> filter = null,
+           Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+           ;
+
+        Task<IEnumerable<JpegMetadata>> MetadataSearchAsync(
+             string search = "",
+           Expression<Func<FileInfo, bool>> filter = null,
+           Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+           ;
+
         JpegMetadata MetadataGetOne(
             Expression<Func<FileInfo, bool>> filter = null)
             ;

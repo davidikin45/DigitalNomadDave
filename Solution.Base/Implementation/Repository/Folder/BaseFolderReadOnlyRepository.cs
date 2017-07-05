@@ -47,6 +47,7 @@ namespace Solution.Base.Implementation.Repository.Folder
         }
 
         protected virtual IQueryable<DirectoryInfo> GetQueryable(
+            string search = "",
             Expression<Func<DirectoryInfo, bool>> filter = null,
             Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null,
             int? skip = null,
@@ -64,6 +65,11 @@ namespace Solution.Base.Implementation.Repository.Folder
             if (filter != null)
             {
                 query = query.Where(filter);
+            }
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                query = query.Where(f => f.FullName.Contains(search));
             }
 
             if (orderBy != null)
@@ -89,7 +95,7 @@ namespace Solution.Base.Implementation.Repository.Folder
           int? skip = null,
           int? take = null)
         {
-            return GetQueryable(null, orderBy, skip, take).ToList();
+            return GetQueryable(null, null, orderBy, skip, take).ToList();
         }
 
         public async virtual Task<IEnumerable<DirectoryInfo>> GetAllAsync(
@@ -97,7 +103,7 @@ namespace Solution.Base.Implementation.Repository.Folder
          int? skip = null,
          int? take = null)
         {
-            return GetQueryable(null, orderBy, skip, take).ToList();
+            return GetQueryable(null, null, orderBy, skip, take).ToList();
         }
 
         public virtual IEnumerable<DirectoryInfo> Get(
@@ -106,7 +112,7 @@ namespace Solution.Base.Implementation.Repository.Folder
             int? skip = null,
             int? take = null)
         {
-            return GetQueryable(filter, orderBy, skip, take).ToList();
+            return GetQueryable(null, filter, orderBy, skip, take).ToList();
         }
 
         public async virtual Task<IEnumerable<DirectoryInfo>> GetAsync(
@@ -115,63 +121,93 @@ namespace Solution.Base.Implementation.Repository.Folder
            int? skip = null,
            int? take = null)
         {
-            return GetQueryable(filter, orderBy, skip, take).ToList();
+            return GetQueryable(null, filter, orderBy, skip, take).ToList();
+        }
+
+        public virtual IEnumerable<DirectoryInfo> Search(
+           string search = "",
+           Expression<Func<DirectoryInfo, bool>> filter = null,
+           Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+        {
+            return GetQueryable(search, filter, orderBy, skip, take).ToList();
+        }
+
+        public async virtual Task<IEnumerable<DirectoryInfo>> SearchAsync(
+            string search = "",
+           Expression<Func<DirectoryInfo, bool>> filter = null,
+           Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+        {
+            return GetQueryable(search, filter, orderBy, skip, take).ToList();
         }
 
         public virtual DirectoryInfo GetOne(
             Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter, null, null, null).SingleOrDefault();
+            return GetQueryable(null, filter, null, null, null).SingleOrDefault();
         }
 
         public async virtual Task<DirectoryInfo> GetOneAsync(
            Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter, null, null, null).SingleOrDefault();
+            return GetQueryable(null, filter, null, null, null).SingleOrDefault();
         }
 
         public virtual DirectoryInfo GetFirst(
            Expression<Func<DirectoryInfo, bool>> filter = null,
            Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null)
         {
-            return GetQueryable(filter, orderBy, null, null).FirstOrDefault();
+            return GetQueryable(null, filter, orderBy, null, null).FirstOrDefault();
         }
 
         public async virtual Task<DirectoryInfo> GetFirstAsync(
           Expression<Func<DirectoryInfo, bool>> filter = null,
           Func<IQueryable<DirectoryInfo>, IOrderedQueryable<DirectoryInfo>> orderBy = null)
         {
-            return GetQueryable(filter, orderBy, null, null).FirstOrDefault();
+            return GetQueryable(null, filter, orderBy, null, null).FirstOrDefault();
         }
 
         public virtual DirectoryInfo GetByPath(string path)
         {
-            return GetQueryable(f => f.FullName.ToLower().EndsWith(path.ToLower())  , null, null, null).FirstOrDefault();
+            return GetQueryable(null, f => f.FullName.ToLower().EndsWith(path.ToLower())  , null, null, null).FirstOrDefault();
         }
 
         public async virtual Task<DirectoryInfo> GetByPathAsync(string path)
         {
-            return GetQueryable(f => f.FullName.ToLower().EndsWith(path.ToLower()), null, null, null).FirstOrDefault();
+            return GetQueryable(null, f => f.FullName.ToLower().EndsWith(path.ToLower()), null, null, null).FirstOrDefault();
         }
 
         public virtual int GetCount(Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter).Count();
+            return GetQueryable(null, filter).Count();
         }
 
         public async virtual Task<int> GetCountAsync(Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter).Count();
+            return GetQueryable(null, filter).Count();
+        }
+
+        public virtual int GetSearchCount(string search= "", Expression<Func<DirectoryInfo, bool>> filter = null)
+        {
+            return GetQueryable(search, filter).Count();
+        }
+
+        public async virtual Task<int> GetSearchCountAsync(string search = "", Expression<Func<DirectoryInfo, bool>> filter = null)
+        {
+            return GetQueryable(search, filter).Count();
         }
 
         public virtual bool GetExists(Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter).Any();
+            return GetQueryable(null, filter).Any();
         }
 
         public async virtual Task<bool> GetExistsAsync(Expression<Func<DirectoryInfo, bool>> filter = null)
         {
-            return GetQueryable(filter).Any();
+            return GetQueryable(null,filter).Any();
         }
 
         public void Dispose()

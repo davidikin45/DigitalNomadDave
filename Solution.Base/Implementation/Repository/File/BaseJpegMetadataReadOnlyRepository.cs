@@ -67,6 +67,26 @@ namespace Solution.Base.Implementation.Repository.File
             return (await base.GetAsync(filter, orderBy, skip, take)).Select(s => MapFileInfoToJpegMetadata(s));
         }
 
+        public virtual IEnumerable<JpegMetadata> MetadataSearch(
+          string search = "",
+          Expression<Func<FileInfo, bool>> filter = null,
+          Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+          int? skip = null,
+          int? take = null)
+        {
+            return base.Search(search, filter, orderBy, skip, take).Select(s => MapFileInfoToJpegMetadata(s));
+        }
+
+        public async virtual Task<IEnumerable<JpegMetadata>> MetadataSearchAsync(
+           string search = "",
+           Expression<Func<FileInfo, bool>> filter = null,
+           Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+        {
+            return (await base.SearchAsync(search, filter, orderBy, skip, take)).Select(s => MapFileInfoToJpegMetadata(s));
+        }
+
         public virtual JpegMetadata MetadataGetOne(
             Expression<Func<FileInfo, bool>> filter = null)
         {

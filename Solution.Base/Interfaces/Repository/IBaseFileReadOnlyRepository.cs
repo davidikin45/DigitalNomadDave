@@ -37,6 +37,22 @@ namespace Solution.Base.Interfaces.Repository
            int? take = null)
            ;
 
+        IEnumerable<FileInfo> Search(
+          string search = "",
+          Expression<Func<FileInfo, bool>> filter = null,
+          Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+          int? skip = null,
+          int? take = null)
+          ;
+
+        Task<IEnumerable<FileInfo>> SearchAsync(
+           string search = "",
+           Expression<Func<FileInfo, bool>> filter = null,
+           Func<IQueryable<FileInfo>, IOrderedQueryable<FileInfo>> orderBy = null,
+           int? skip = null,
+           int? take = null)
+           ;
+
         FileInfo GetOne(
             Expression<Func<FileInfo, bool>> filter = null)
             ;
@@ -66,6 +82,12 @@ namespace Solution.Base.Interfaces.Repository
 
         Task<int> GetCountAsync(Expression<Func<FileInfo, bool>> filter = null)
            ;
+
+        int GetSearchCount(string search = "", Expression<Func<FileInfo, bool>> filter = null)
+          ;
+
+        Task<int> GetSearchCountAsync(string search= "", Expression<Func<FileInfo, bool>> filter = null)
+         ;
 
         bool GetExists(Expression<Func<FileInfo, bool>> filter = null)
             ;
