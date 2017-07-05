@@ -9,6 +9,8 @@
     var mainPhotoVideo = ((DirectoryInfo)ViewBag.Album).MainPhotoOrVideo();
     var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
     ViewBag.MainImage = mainImageShare;
+
+    HashSet<string> files = new HashSet<string>();
 }
 
 <div class="row">
@@ -21,7 +23,11 @@
 <div class="instafeed card-columns-md-2 gallery">
     @foreach (var item in Model.Data)
     {
-        @Html.Partial("_Media", item, new ViewDataDictionary { {"width", 0 }})
+        if (!files.Contains(item.Name))
+        {
+            @Html.Partial("_Media", item, new ViewDataDictionary { { "width", 0 } })
+            files.Add(item.Name);
+        }
     @*<div class="card-spacer">&nbsp;</div>*@
     }
 </div>

@@ -25,10 +25,15 @@
 
 @if (!string.IsNullOrEmpty(Model.Album))
 {
+    HashSet<string> files = new HashSet<string>();
     <div class="card-columns-md-2">
     @foreach (FileInfo file in Html.FileSystemRepositoryFactory().CreateFileRepositoryReadOnly(default(CancellationToken), Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album, true, "*.*", ".jpg", ".jpeg", ".mp4",".txt").GetAll(LamdaHelper.GetOrderByFunc<FileInfo>(nameof(FileInfo.LastWriteTime), OrderByType.Descending), null, null))
     {
-        @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 0 } })
+        if (!files.Contains(file.Name))
+        {
+            @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 0 } })
+            files.Add(file.Name);
+        }
         @*<div class="card-spacer">&nbsp;</div>*@
     }
     </div>
