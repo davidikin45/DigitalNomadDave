@@ -8,14 +8,14 @@ using Solution.Base.ModelMetadata;
 
 namespace Solution.Base.Ninject
 {
-	public class NinjectModelMetadataModule : NinjectModule
+    public class NinjectModelMetadataModule : NinjectModule
     {
 
-        string _path;
+        string[] _paths;
         Func<Type, Boolean> _filter;
-        public NinjectModelMetadataModule(string path, Func<Type, Boolean> filter)
+        public NinjectModelMetadataModule(string[] paths, Func<Type, Boolean> filter)
         {
-            _path = path;
+            _paths = paths;
             _filter = filter;
         }
 
@@ -23,11 +23,13 @@ namespace Solution.Base.Ninject
         {
             Bind<ModelMetadataProvider>().To<ExtensibleModelMetadataProvider>();
 
-            this.Bind(x => x
-              .FromAssembliesInPath(_path)
-              .SelectAllClasses().InheritedFrom<IModelMetadataFilter>().Where(_filter)
-              .BindAllInterfaces());
-
+            foreach (string _path in _paths)
+            {
+                this.Bind(x => x
+                              .FromAssembliesInPath(_path)
+                              .SelectAllClasses().InheritedFrom<IModelMetadataFilter>().Where(_filter)
+                              .BindAllInterfaces());
+            }
         }
     }
 }

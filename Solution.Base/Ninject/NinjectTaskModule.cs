@@ -8,20 +8,20 @@ using System.Reflection;
 using System.Collections.Generic;
 
 namespace Solution.Base.Ninject
-{ 
+{
     [Serializable]
-	public class NinjectTaskModule : NinjectModule
-  {
-        string _path;
+    public class NinjectTaskModule : NinjectModule
+    {
+        string[] _paths;
         Func<Type, Boolean> _filter;
-        public NinjectTaskModule(string path, Func<Type, Boolean> filter)
+        public NinjectTaskModule(string[] paths, Func<Type, Boolean> filter)
         {
-            _path = path;
+            _paths = paths;
             _filter = filter;
         }
 
         public override void Load()
-         {
+        {
 
             var types = new List<Type>();
             types.Add(typeof(IRunAtInit));
@@ -31,11 +31,14 @@ namespace Solution.Base.Ninject
             types.Add(typeof(IRunOnError));
             types.Add(typeof(IRunAfterEachRequest));
 
-            this.Bind(x => x
-             .FromAssembliesInPath(_path)
-             .SelectAllClasses().InheritedFromAny(types).Where(_filter)
-            .BindAllInterfaces());
+            foreach (string _path in _paths)
+            {
+                this.Bind(x => x
+                             .FromAssembliesInPath(_path)
+                             .SelectAllClasses().InheritedFromAny(types).Where(_filter)
+                            .BindAllInterfaces());
 
+            }
         }
-	}
+    }
 }

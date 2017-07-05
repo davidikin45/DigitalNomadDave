@@ -1166,8 +1166,7 @@
 SET plugins="$(TargetDir)plugins\"
 SET project="$(ProjectDir)"
 
-for %25%25F in (%25plugins%25*) do @if exist "%25bin%25%25%25~nxF" (del /q %25plugins%25%25%25~nxF)
-xcopy "%25bin%25Solution.Base.*" %25plugins%25 /Y</PostBuildEvent>
+for %25%25F in (%25plugins%25*) do @if exist "%25bin%25%25%25~nxF" (del /q %25plugins%25%25%25~nxF)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>SET plugins="$(TargetDir)plugins\"

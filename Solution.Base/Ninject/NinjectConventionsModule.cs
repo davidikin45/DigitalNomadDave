@@ -19,11 +19,11 @@ namespace Solution.Base.Ninject
     [Serializable()]
     public class NinjectConventionsModule : NinjectModule
     {
-        string _path;
+        string[] _paths;
         Func<Type, Boolean> _filter;
-        public NinjectConventionsModule(string path, Func<Type, Boolean> filter)
+        public NinjectConventionsModule(string[] paths, Func<Type, Boolean> filter)
         {
-            _path = path;
+            _paths = paths;
             _filter = filter;
         }
 
@@ -34,11 +34,13 @@ namespace Solution.Base.Ninject
             //   .SelectAllClasses()
             // .BindDefaultInterface()
             //  );
-
-            this.Bind(x => x
+            foreach (string _path in _paths)
+            {
+                this.Bind(x => x
               .FromAssembliesInPath(_path)
               .SelectAllClasses().Where(_filter)
               .BindDefaultInterface());
+            }
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Solution.Base.Ninject
         public static IKernel BuildKernel<TUser>(string name)
             where TUser : IdentityUser, IUser
         {
+            string binPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
             string pluginsPath = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath), "plugins\\");
             if (!Directory.Exists(pluginsPath)) Directory.CreateDirectory(pluginsPath);
 
@@ -34,10 +35,10 @@ namespace Solution.Base.Ninject
             var modules = new INinjectModule[]
            {
                 new NinjectMVCModule<TUser>(),
-                new NinjectConventionsModule(pluginsPath, filter),
-                new NinjectTaskModule(pluginsPath, filter),
+                new NinjectConventionsModule(new string[] {binPath, pluginsPath}, filter),
+                new NinjectTaskModule(new string[] {binPath, pluginsPath}, filter),
                 new NinjectAutomapperModule(filterFunc),
-                new NinjectModelMetadataModule(pluginsPath, filter)
+                new NinjectModelMetadataModule(new string[] {binPath, pluginsPath}, filter)
            };
             var kernel= new StandardKernel(modules);
 
