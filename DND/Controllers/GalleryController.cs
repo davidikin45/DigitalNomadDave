@@ -39,15 +39,15 @@ namespace DND.Controllers
 
         [OutputCache(CacheProfile = "Cache24HourParams")]
         [Route("")]
-        public async Task<ActionResult> Index(int page = 1, int pageSize = 20, string orderColumn = nameof(DirectoryInfo.LastWriteTime), string orderType = OrderByType.Descending)
+        public async Task<ActionResult> Index(int page = 1, int pageSize = 20, string orderColumn = nameof(DirectoryInfo.LastWriteTime), string orderType = OrderByType.Descending, string search = "")
 		{
             var cts = TaskHelper.CreateChildCancellationTokenSource(HttpContext.Response.ClientDisconnectedToken);
            
             try
             {
                 var repository = _fileSystemRepositoryFactory.CreateFolderRepository(cts.Token, Server.GetFolderPhysicalPathById(Folders.Gallery));
-                var dataTask = repository.GetAllAsync(LamdaHelper.GetOrderByFunc<DirectoryInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
-                var totalTask = repository.GetCountAsync(null);
+                var dataTask = repository.SearchAsync(search, null, LamdaHelper.GetOrderByFunc<DirectoryInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
+                var totalTask = repository.GetSearchCountAsync(search, null);
 
                 await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
 
@@ -61,9 +61,11 @@ namespace DND.Controllers
                     Records = total,
                     Rows = data.ToList(),
                     OrderColumn = orderColumn,
-                    OrderType = orderType
+                    OrderType = orderType,
+                    Search = search
                 };
 
+                ViewBag.Search = search;
                 ViewBag.Page = page;
                 ViewBag.PageSize = pageSize;
                 ViewBag.OrderColumn = orderColumn;

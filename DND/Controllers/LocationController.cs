@@ -38,14 +38,14 @@ namespace DND.Controllers
 
         [OutputCache(CacheProfile = "Cache24HourParams")]
         [Route("")]
-        public async Task<ActionResult> Index(int page = 1, int pageSize = 20, string orderColumn = nameof(LocationDTO.Name), string orderType = OrderByType.Ascending)
+        public async Task<ActionResult> Index(int page = 1, int pageSize = 20, string orderColumn = nameof(LocationDTO.Name), string orderType = OrderByType.Ascending, string search = "")
         {
             var cts = TaskHelper.CreateChildCancellationTokenSource(HttpContext.Response.ClientDisconnectedToken);
 
             try
             {
-                var dataTask = _locationService.GetAsync(cts.Token, l => !string.IsNullOrEmpty(l.Album) && !string.IsNullOrEmpty(l.UrlSlug), LamdaHelper.GetOrderBy<LocationDTO>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
-                var totalTask = _locationService.GetCountAsync(cts.Token, l => !string.IsNullOrEmpty(l.Album) && !string.IsNullOrEmpty(l.UrlSlug));
+                var dataTask = _locationService.SearchAsync(cts.Token, search, l => !string.IsNullOrEmpty(l.Album) && !string.IsNullOrEmpty(l.UrlSlug), LamdaHelper.GetOrderBy<LocationDTO>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
+                var totalTask = _locationService.GetSearchCountAsync(cts.Token, search, l => !string.IsNullOrEmpty(l.Album) && !string.IsNullOrEmpty(l.UrlSlug));
 
                 await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
 
@@ -59,9 +59,11 @@ namespace DND.Controllers
                     Records = total,
                     Rows = data.ToList(),
                     OrderColumn = orderColumn,
-                    OrderType = orderType
+                    OrderType = orderType,
+                    Search = search
                 };
 
+                ViewBag.Search = search;
                 ViewBag.Page = page;
                 ViewBag.PageSize = pageSize;
                 ViewBag.OrderColumn = orderColumn;

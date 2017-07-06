@@ -6,19 +6,30 @@
     ViewBag.Blog = true;
 }
 
+@using (Html.BeginForm(Html.Action(), Html.Controller(), FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="input-group input-group-full-width mb-2">
+        @Html.TextBox("search", ViewBag.Search as string, new { placeholder = "Search", @class = "form-control" })
+        <span class="input-group-btn">
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </span>
+    </div>
+}
+
 <div id="galleries" class="card-columns card-columns-sm-1 card-columns-md-2 card-columns-lg-2 card-columns-xl-2">
 
-    <div class="card card-inverse" id="instagram-album" style="display:inline-block">     
-        <a class="card-img-top" title="Instagram" href="@(Url.Action("Gallery", new { name = "instagram" }))">
-            <div class="card-img-overlay card-img-overlay-hover d-flex">
-                <div class="my-auto mx-auto text-center">
-                    <h4 class="card-title">Instagram</h4>
+    @if (string.IsNullOrEmpty(Model.Search) || "instagram".Contains(Model.Search.ToLower()))
+    {
+        <div class="card card-inverse" id="instagram-album" style="display:inline-block">     
+            <a class="card-img-top" title="Instagram" href="@(Url.Action("Gallery", new { name = "instagram" }))">
+                <div class="card-img-overlay card-img-overlay-hover d-flex">
+                    <div class="my-auto mx-auto text-center">
+                        <h4 class="card-title">Instagram</h4>
+                    </div>
                 </div>
-            </div>
-        </a>
-    </div>
-
-    
+            </a>
+        </div>
+    }
 
     @foreach (var album in Model.Data)
     {
@@ -36,22 +47,25 @@
     }
 </div>
 
-@{Func<int, string> link = pageIndex => Url.Action("Index", new { page = pageIndex, pageSize = Model.PageSize, orderColumn = Model.OrderColumn, orderType = Model.OrderType });}
+@{Func<int, string> link = pageIndex => Url.Action("Index", new { page = pageIndex, pageSize = Model.PageSize, orderColumn = Model.OrderColumn, orderType = Model.OrderType, search = Model.Search });}
 @HtmlHelperExtensions.BootstrapPager(Html, Model.Page, link, Model.TotalItems, Model.PageSize, 5)
 
-@section scripts {
-    <script type="text/javascript">
-        var userFeed = new Instafeed({
-            get: 'user',
-            userId: '@System.Configuration.ConfigurationManager.AppSettings["InstagramUserId"]',
-            accessToken: '@System.Configuration.ConfigurationManager.AppSettings["InstagramAccessToken"]',
-            template: '<img alt="Instagram" class="card-img-top" src="{{image}}" />',
-            resolution: 'standard_resolution',
-            limit: 1,
-            target: 'instagram-album'
-        });
-        userFeed.run();
-        //https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token
-        //model.images.standard_resolution.url
-    </script>
+@if(string.IsNullOrEmpty(Model.Search) || "instagram".Contains(Model.Search.ToLower()))
+{
+    @section scripts {
+        <script type="text/javascript">
+            var userFeed = new Instafeed({
+                get: 'user',
+                userId: '@System.Configuration.ConfigurationManager.AppSettings["InstagramUserId"]',
+                accessToken: '@System.Configuration.ConfigurationManager.AppSettings["InstagramAccessToken"]',
+                template: '<img alt="Instagram" class="card-img-top" src="{{image}}" />',
+                resolution: 'standard_resolution',
+                limit: 1,
+                target: 'instagram-album'
+            });
+            userFeed.run();
+            //https://api.instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token
+            //model.images.standard_resolution.url
+        </script>
+    }
 }

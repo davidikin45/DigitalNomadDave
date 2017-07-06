@@ -136,7 +136,7 @@ namespace DND.Controllers
             nodes.Add(
                  new SitemapNode()
                  {
-                     Url = Url.AbsoluteUrl<LocationController>(c => c.Index(1, 20, nameof(LocationDTO.Name), OrderByType.Ascending), false),
+                     Url = Url.AbsoluteUrl<LocationController>(c => c.Index(1, 20, nameof(LocationDTO.Name), OrderByType.Ascending,""), false),
                      Priority = 0.9
                  });
 
