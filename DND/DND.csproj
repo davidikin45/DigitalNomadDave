@@ -522,10 +522,45 @@
     <Content Include="css\multiselect.css" />
     <Content Include="css\polaroid-images.css" />
     <Content Include="css\return-to-top.css" />
-    <Content Include="css\site-xl.css" />
-    <Content Include="css\site-sm.css" />
-    <Content Include="css\site-md.css" />
-    <Content Include="css\site-lg.css" />
+    <None Include="css\site-xl.less" />
+    <None Include="css\site-sm.less" />
+    <None Include="css\site-md.less" />
+    <None Include="css\site-lg.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="css\site-xs.less" />
+    <Content Include="css\site-lg.css">
+      <DependentUpon>site-lg.less</DependentUpon>
+    </Content>
+    <Content Include="css\site-lg.min.css">
+      <DependentUpon>site-lg.css</DependentUpon>
+    </Content>
+    <Content Include="css\site-md.css">
+      <DependentUpon>site-md.less</DependentUpon>
+    </Content>
+    <Content Include="css\site-md.min.css">
+      <DependentUpon>site-md.css</DependentUpon>
+    </Content>
+    <Content Include="css\site-sm.css">
+      <DependentUpon>site-sm.less</DependentUpon>
+    </Content>
+    <Content Include="css\site-sm.min.css">
+      <DependentUpon>site-sm.css</DependentUpon>
+    </Content>
+    <Content Include="css\site-xl.css">
+      <DependentUpon>site-xl.less</DependentUpon>
+    </Content>
+    <Content Include="css\site-xl.min.css">
+      <DependentUpon>site-xl.css</DependentUpon>
+    </Content>
+    <Content Include="css\site-xs.css">
+      <DependentUpon>site-xs.less</DependentUpon>
+    </Content>
+    <Content Include="css\site-xs.min.css">
+      <DependentUpon>site-xs.css</DependentUpon>
+    </Content>
     <Content Include="css\sticky-notes.css" />
     <Content Include="favicon-128.png" />
     <Content Include="favicon-16x16.png" />
@@ -853,7 +888,6 @@
     <Content Include="images\rss.png" />
     <Content Include="images\Skyscanner-Logo-Original-white.png" />
     <Content Include="css\modal.css" />
-    <Content Include="css\site-xs.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="js\app\app.js" />

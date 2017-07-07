@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "css/site-xs.css",
+    "inputFile": "css/site-xs.less"
+  },
+  {
+    "outputFile": "css/site-xl.css",
+    "inputFile": "css/site-xl.less"
+  },
+  {
+    "outputFile": "css/site-sm.css",
+    "inputFile": "css/site-sm.less"
+  },
+  {
+    "outputFile": "css/site-md.css",
+    "inputFile": "css/site-md.less"
+  },
+  {
+    "outputFile": "css/site-lg.css",
+    "inputFile": "css/site-lg.less"
+  }
+]
