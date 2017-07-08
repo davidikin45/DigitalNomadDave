@@ -562,6 +562,12 @@
       <DependentUpon>site-xs.css</DependentUpon>
     </Content>
     <Content Include="css\sticky-notes.css" />
+    <Content Include="css\styles.css">
+      <DependentUpon>styles.less</DependentUpon>
+    </Content>
+    <Content Include="css\styles.min.css">
+      <DependentUpon>styles.css</DependentUpon>
+    </Content>
     <Content Include="favicon-128.png" />
     <Content Include="favicon-16x16.png" />
     <Content Include="favicon-196x196.png" />
@@ -840,6 +846,7 @@
     <Content Include="FileManager\LICENSE.txt" />
     <Content Include="FileManager\third-party.txt" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="gulpfile.js" />
     <Content Include="images\airbnb %28Mobile%29.png" />
     <Content Include="images\bg.JPG" />
     <Content Include="images\github.jpg" />
@@ -1059,7 +1066,7 @@
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Project\_Projects.cshtml" />
     <Content Include="Views\Testimonial\_Testimonials.cshtml" />
-    <Content Include="css\styles.less" />
+    <None Include="css\styles.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

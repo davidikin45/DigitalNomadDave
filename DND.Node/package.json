@@ -1,0 +1,16 @@
+{
+  "name": "dnd.node",
+  "version": "0.1.0",
+  "description": "DND Node",
+  "main": "server.js",
+  "author": {
+    "name": "David Ikin",
+    "email": "davidikin45@gmail.com"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "underscore": "^1.8.3",
+    "vash": "^0.12.2"
+  }
+}

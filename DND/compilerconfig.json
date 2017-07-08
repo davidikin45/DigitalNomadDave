@@ -18,5 +18,9 @@
   {
     "outputFile": "css/site-lg.css",
     "inputFile": "css/site-lg.less"
+  },
+  {
+    "outputFile": "css/styles.css",
+    "inputFile": "css/styles.less"
   }
 ]

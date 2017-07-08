@@ -1,11 +1,19 @@
 {
-  "version": "1.0.0",
   "name": "DND",
+  "version": "1.0.0",
+  "author": {
+    "name": "David Ikin",
+    "email": "davidikin45@gmail.com"
+  },
   "private": true,
   "scripts": {
     "postinstall": "bower install"
   },
   "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.1",
+    "gulp-uglify": "3.0.0",
+    "del": "3.0.0",
     "bower": "^1.7.9"
   }
 }
