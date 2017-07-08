@@ -1059,6 +1059,7 @@
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Project\_Projects.cshtml" />
     <Content Include="Views\Testimonial\_Testimonials.cshtml" />
+    <Content Include="css\styles.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

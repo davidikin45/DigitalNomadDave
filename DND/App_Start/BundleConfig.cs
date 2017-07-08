@@ -54,6 +54,7 @@ namespace DND
                         "~/css/flags32.css",
                        "~/css/modal.css",
                         "~/css/polaroid-images.css",
+                       "~/css/styles.css",
                        "~/css/site-xs.css",
                        "~/css/site-sm.css",
                        "~/css/site-md.css",
