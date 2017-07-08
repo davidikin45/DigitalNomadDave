@@ -1,29 +1,19 @@
 'use strict';
 var http = require('http');
 var express = require('express');
-
 var app = express();
+var controllers = require('./controllers');
 
-//Setup the View Engine
+//1. Setup the View Engine
 //app.set("view engine", "jade");
 app.set("view engine", "vash"); //razor
 
-app.get("/", function (req, res) {
-    //res.writeHead(200, { 'Content-Type': 'text/plain' });
+//2. set the public static resource folder
+app.use(express.static(__dirname + "/public"));
 
-    var msgs = require('./msgs.js');
-    res.render("index", { title: "test" });
+//3. Map the routes
+controllers.init(app);
 
-    //var func = require('./func.js');
-    //res.send(func());
-
-    //var obj = require('./obj.js');
-    //var a = new obj();
-
-    //var logger = require('./logger');
-    //logger.log('This is from the logger');
-    //res.send(a.first);
-});
 
 app.get("/api/users", function (req, res) {
     res.set("Content-Type", "text/plain");
