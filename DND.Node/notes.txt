@@ -15,3 +15,7 @@ npm install grunt-nodemon --save-dev
 create gruntfile.js
 
  npm install tedious --save
+
+ mongod -dbpath ./data --rest
+
+ npm install mongodb --save
