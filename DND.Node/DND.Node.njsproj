@@ -28,6 +28,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="controllers\api\noteController.js" />
     <Compile Include="controllers\homeController.js" />
     <Compile Include="controllers\index.js">
       <SubType>Code</SubType>
@@ -57,23 +58,25 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="notes.txt" />
+    <Content Include="public\images\note-blue.png" />
+    <Content Include="public\images\note-green.png" />
+    <Content Include="public\images\note-orange.png" />
+    <Content Include="public\images\note-yellow.png" />
     <Content Include="README.md" />
+    <Content Include="views\notes.vash" />
     <Content Include="views\layout.vash" />
     <Content Include="views\index.vash" />
-    <Content Include="views\jade\index.jade" />
-    <Content Include="views\jade\layout.jade">
-      <SubType>Code</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="controllers\api\" />
     <Folder Include="logger\" />
     <Folder Include="auth\" />
     <Folder Include="controllers\" />
     <Folder Include="data\" />
     <Folder Include="public\css\" />
+    <Folder Include="public\images\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
-    <Folder Include="views\jade\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

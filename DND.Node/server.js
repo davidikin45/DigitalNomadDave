@@ -1,21 +1,41 @@
 'use strict';
 var http = require('http');
 var express = require('express');
+var session = require('express-session')
+var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+
 var app = express();
 var controllers = require('./controllers');
+var flash = require('connect-flash');
 
 //1. Setup the View Engine
 //app.set("view engine", "jade");
 app.set("view engine", "vash"); //razor
 
-//2. set the public static resource folder
+//2. Opt into middleware services
+//posting form data
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+//posting json datas
+//temporary error data in session state
+app.use(cookieParser());
+app.use(session({
+    secret: "abcdef",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
+
+//3. set the public static resource folder
 app.use(express.static(__dirname + "/public"));
 
-//3. Map the routes
+//4. Map the routes
 controllers.init(app);
 
-
-//4.SQL DB Connection config
+//5.SQL DB Connection config
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 var config =
