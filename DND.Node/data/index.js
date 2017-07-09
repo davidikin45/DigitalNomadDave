@@ -80,6 +80,17 @@
         });
     };
 
+    data.addUser = function (user, next) {
+        database.getDb(function (err, db) {
+            if (err) {
+                next(error);
+            }
+            else {
+                db.users.insert(user, next);
+            }
+        });
+    };
+
     function seedDatabase() {
         database.getDb(function(err, db) {
             if(err)

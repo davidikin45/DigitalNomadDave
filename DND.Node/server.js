@@ -32,10 +32,14 @@ app.use(flash());
 //3. set the public static resource folder
 app.use(express.static(__dirname + "/public"));
 
-//4. Map the routes
+//4. Use authentication
+var auth = require("./auth");
+auth.init(app);
+
+//5. Map the routes
 controllers.init(app);
 
-//5.SQL DB Connection config
+//6. SQL DB Connection config
 var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 var config =

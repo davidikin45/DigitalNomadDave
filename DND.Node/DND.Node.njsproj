@@ -28,6 +28,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="auth\index.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="controllers\api\noteController.js" />
     <Compile Include="controllers\homeController.js" />
     <Compile Include="controllers\index.js">
@@ -52,6 +55,9 @@
     <Compile Include="public\js\notesView.js" />
     <Compile Include="server.js" />
     <Compile Include="data\index.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="views\register.vash">
       <SubType>Code</SubType>
     </Compile>
     <Content Include="package.json" />
