@@ -49,6 +49,7 @@
     <Compile Include="msgs.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\js\notesView.js" />
     <Compile Include="server.js" />
     <Compile Include="data\index.js">
       <SubType>Code</SubType>
@@ -75,6 +76,7 @@
     <Folder Include="data\" />
     <Folder Include="public\css\" />
     <Folder Include="public\images\" />
+    <Folder Include="public\js\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
   </ItemGroup>

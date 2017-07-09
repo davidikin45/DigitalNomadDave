@@ -20,7 +20,7 @@
 
         app.post("/api/note/:categoryName", function (req, res) {
             //body will contain post data in form encoded data. Make sure app.use(express.urlencoded()); has been executed
-            var categoryName = req.body.categoryName;
+            var categoryName = req.params.categoryName;
 
             var noteToInsert = {
                 note: req.body.note,
