@@ -7,9 +7,10 @@ npm install vash --save
 
 npm install bower -g
 create .bowerrc file and save as with encoding Windows codepage 1252
+create bower.json file for dependencies
 
-bower install underscore
-bower install bootstrap
+bower install underscore --save
+bower install bootstrap --save
 
 npm install grunt-cli -g
 npm install grunt --save-dev
@@ -24,3 +25,5 @@ create gruntfile.js
  npm install mongodb --save
 
  npm install connect-flash --save
+
+ bower install angular-bootstrap --save
