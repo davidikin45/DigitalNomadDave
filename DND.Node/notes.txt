@@ -1,0 +1,17 @@
+﻿npm install underscore --save
+npm install express --save
+npm install vash --save
+
+npm install bower -g
+create .bowerrc file and save as with encoding Windows codepage 1252
+
+bower install underscore
+bower install bootstrap
+
+npm install grunt-cli -g
+npm install grunt --save-dev
+npm install grunt-nodemon --save-dev
+
+create gruntfile.js
+
+ npm install tedious --save

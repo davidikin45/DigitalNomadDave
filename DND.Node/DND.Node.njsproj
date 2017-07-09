@@ -55,6 +55,7 @@
     <Content Include="public\css\site.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="notes.txt" />
     <Content Include="README.md" />
     <Content Include="views\layout.vash" />
     <Content Include="views\index.vash" />
