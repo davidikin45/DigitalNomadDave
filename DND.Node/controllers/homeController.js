@@ -1,6 +1,7 @@
 ﻿(function (homeController) {
 
     var data = require("../data");
+    var auth = require("../auth");
 
     homeController.init = function (app){
         app.get("/", function (req, res) {
@@ -10,18 +11,22 @@
                     title: "Note Board",
                     error: err,
                     categories: results,
-                    newCatError: req.flash("newCatName")
+                    newCatError: req.flash("newCatName"),
+                    user: req.user
                 });
             });     
         });
 
-        app.get("/note/:categoryName", function (req, res) {
-
+        //Only allow user to see page if authenticated
+        app.get("/note/:categoryName",
+            auth.ensureAuthenticated,
+            function (req, res) {
             var categoryName = req.params.categoryName;
 
             data.getNoteCategories(function (err, results) {
                 res.render("notes", {
-                    title: categoryName
+                    title: categoryName,
+                    user: req.user
                 });
             });
         });

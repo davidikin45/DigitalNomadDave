@@ -91,6 +91,17 @@
         });
     };
 
+    data.getUser = function (username, next) {
+        database.getDb(function (err, db) {
+            if (err) {
+                next(error);
+            }
+            else {
+                db.users.findOne({ username: username }, next);
+            }
+        });
+    };
+
     function seedDatabase() {
         database.getDb(function(err, db) {
             if(err)

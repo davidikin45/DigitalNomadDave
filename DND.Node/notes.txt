@@ -1,5 +1,8 @@
 ﻿npm install underscore --save
 npm install express --save
+http://passportjs.org/
+npm install passport --save
+npm install passport-local --save
 npm install express-session --save
 npm install body-parser --save
 npm install cookie-parser --save
@@ -27,3 +30,5 @@ create gruntfile.js
  npm install connect-flash --save
 
  bower install angular-bootstrap --save
+
+ web socket is full duplex communication over TCP

@@ -1,9 +1,12 @@
 ﻿(function (noteController) {
 
     var data = require("../../data");
+    var auth = require("../../auth");
 
     noteController.init = function (app){
-        app.get("/api/note/:categoryName", function (req, res) {
+        app.get("/api/note/:categoryName",
+            auth.ensureApiAuthenticated,
+            function (req, res) {
 
             var categoryName = req.params.categoryName;
 
@@ -18,7 +21,9 @@
             });     
         });
 
-        app.post("/api/note/:categoryName", function (req, res) {
+        app.post("/api/note/:categoryName",
+            auth.ensureApiAuthenticated,
+            function (req, res) {
             //body will contain post data in form encoded data. Make sure app.use(express.urlencoded()); has been executed
             var categoryName = req.params.categoryName;
 
