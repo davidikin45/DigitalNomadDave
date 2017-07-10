@@ -31,4 +31,34 @@ create gruntfile.js
 
  bower install angular-bootstrap --save
 
- web socket is full duplex communication over TCP
+SOCKET.IO (Signal R) - Abstraction
+ Web Socket is full duplex communication over TCP. 
+ Real time bi-directional between browser and server.
+ HTTP is connectionless. 
+ Web sockets is not. 
+ Handshake on port 80.
+ Server/Client
+
+ npm install socket.io --save
+ bower install socket.io-client --save
+
+ -- join room (client) --
+  socket.join(name)
+
+ -- sending --
+ send to single client or server = socket.emit
+ broadcast = socket.broadcast.emit
+ broadcast to room = socket.broadcast.to(room).emit
+
+ -- receiving --
+socket.on("newNote", function (data) {
+               
+});
+
+
+
+
+
+
+
+

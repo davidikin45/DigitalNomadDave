@@ -51,7 +51,7 @@
             data.getUser(key, function (err, user) {
                 if (err)
                 {
-                    next(null, false {message: "Failed to retrieve user" });
+                    next(null, false, {message: "Failed to retrieve user" });
                 }
                 else
                 {
@@ -101,10 +101,10 @@
             var salt = hasher.createSalt();
 
             var user = {
-                name = req.body.name,
-                email = req.body.email,
-                username = req.body.username,
-                passwordHash = hasher.computeHash(req.body.password, salt),
+                name : req.body.name,
+                email : req.body.email,
+                username : req.body.username,
+                passwordHash : hasher.computeHash(req.body.password, salt),
                 salt: salt
             };
 

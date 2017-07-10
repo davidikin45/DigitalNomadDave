@@ -28,6 +28,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="auth\hasher.js" />
     <Compile Include="auth\index.js">
       <SubType>Code</SubType>
     </Compile>
@@ -48,18 +49,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="obj.js" />
-    <Compile Include="func.js" />
-    <Compile Include="msgs.js">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="public\js\notesView.js" />
     <Compile Include="server.js" />
     <Compile Include="data\index.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="web-socket\index.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="views\register.vash">
       <SubType>Code</SubType>
     </Compile>
+    <Content Include="bower.json" />
     <Content Include="package.json" />
     <Content Include="public\css\site.css">
       <SubType>Code</SubType>
@@ -70,6 +71,7 @@
     <Content Include="public\images\note-orange.png" />
     <Content Include="public\images\note-yellow.png" />
     <Content Include="README.md" />
+    <Content Include="views\login.vash" />
     <Content Include="views\notes.vash" />
     <Content Include="views\layout.vash" />
     <Content Include="views\index.vash" />
@@ -83,6 +85,7 @@
     <Folder Include="public\css\" />
     <Folder Include="public\images\" />
     <Folder Include="public\js\" />
+    <Folder Include="web-socket\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
   </ItemGroup>
