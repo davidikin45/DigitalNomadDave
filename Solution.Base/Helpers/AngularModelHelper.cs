@@ -9,7 +9,7 @@ using Solution.Base.Extensions;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Microsoft.Web.Mvc.Html;
 using System.Web.Mvc.Html;
 

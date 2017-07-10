@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using System.Security.Principal;
 using Solution.Base.Interfaces.Persistance;
 using Microsoft.AspNet.Identity;

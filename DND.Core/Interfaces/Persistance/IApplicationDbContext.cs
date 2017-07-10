@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 
 using Solution.Base.Interfaces.Persistance;
-using DND.Core.Model;
+using DND.Core.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DND.Core.Interfaces.Persistance

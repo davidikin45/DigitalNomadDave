@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.SqlServer;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.EFPersistance;
 using Solution.Base.Infrastructure;
 using DND.EFPersistance.Initializers;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 
 namespace DND.IntegrationTests
 {

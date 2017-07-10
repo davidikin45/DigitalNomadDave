@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Ninject;
 using System.Web.Http.Controllers;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using System.Web.Mvc;
 using Solution.Base.Interfaces.Model;
 

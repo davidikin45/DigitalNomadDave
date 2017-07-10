@@ -1,6 +1,6 @@
-﻿using DND.Core.Model;
+﻿using DND.Core.Models;
 using Solution.Base.Implementation.DTOs;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Automapper;
 using Solution.Base.ModelMetadata;
 using System;

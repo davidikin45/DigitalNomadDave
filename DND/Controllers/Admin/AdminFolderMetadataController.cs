@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using DND.Core.Interfaces.Services;
-using DND.Core.Model;
+using DND.Core.Models;
 using Solution.Base.Controllers;
 using Solution.Base.Email;
 using Solution.Base.Implementation.DTOs;

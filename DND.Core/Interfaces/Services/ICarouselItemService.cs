@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Linq.Expressions;
-using DND.Core.Model;
+using DND.Core.Models;
 
 namespace DND.Core.Interfaces.Services
 {

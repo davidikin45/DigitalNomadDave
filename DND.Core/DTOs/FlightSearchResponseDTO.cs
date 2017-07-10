@@ -1,4 +1,4 @@
-﻿using Solution.Base.Implementation.Model;
+﻿using Solution.Base.Implementation.Models;
 using Solution.Base.Infrastructure;
 using System;
 using System.Collections.Generic;

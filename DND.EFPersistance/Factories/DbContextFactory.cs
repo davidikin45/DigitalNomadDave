@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DND.Core.Interfaces.Persistance;
 using Solution.Base.Interfaces.Persistance;
-using DND.Core.Model;
+using DND.Core.Models;
 
 namespace DND.EFPersistance
 {

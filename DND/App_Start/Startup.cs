@@ -5,10 +5,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.Interfaces.Persistance;
 using Solution.Base.Interfaces.Persistance;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Swashbuckle;
 using Solution.Base.Tasks;
 

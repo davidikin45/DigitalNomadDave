@@ -1,5 +1,5 @@
 ﻿using Solution.Base.Helpers;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

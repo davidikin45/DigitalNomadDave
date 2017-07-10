@@ -3,7 +3,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Solution.Base.Controllers;
 using DND.Core.ViewModels;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.Interfaces.Services;
 using Solution.Base.Helpers;
 using Solution.Base.ActionResults;

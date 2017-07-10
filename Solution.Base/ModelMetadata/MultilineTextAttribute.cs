@@ -1,4 +1,4 @@
-﻿using Solution.Base.Implementation.Model;
+﻿using Solution.Base.Implementation.Models;
 using System;
 using System.Linq.Expressions;
 using System.Web.Mvc;

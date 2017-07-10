@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Solution.Base.Interfaces.Repository;
 
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Model;
 using Solution.Base.Interfaces.Persistance;
 

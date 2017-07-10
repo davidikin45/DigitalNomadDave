@@ -9,10 +9,10 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.Interfaces.Persistance;
 using Solution.Base.Interfaces.Persistance;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 
 namespace DND
 {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Solution.Base.Implementation.DTOs;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Persistance;
 using Solution.Base.Interfaces.Services;
 using Solution.Base.Interfaces.UnitOfWork;

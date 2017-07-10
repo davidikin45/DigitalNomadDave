@@ -1,5 +1,5 @@
 ﻿using DND.Core.Interfaces.Services;
-using DND.Core.Model;
+using DND.Core.Models;
 using Solution.Base.Implementation.Services;
 using Solution.Base.Implementation.Validation;
 using Solution.Base.Interfaces.UnitOfWork;

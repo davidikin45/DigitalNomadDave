@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Solution.Base.Implementation.Repository.EntityFramework;
-using DND.Core.Model;
+using DND.Core.Models;
 using Solution.Base.Interfaces.Persistance;
 using DND.Core.Interfaces.Persistance;
 using Moq;

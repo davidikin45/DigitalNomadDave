@@ -1,5 +1,5 @@
-﻿using DND.Core.Model;
-using Solution.Base.Implementation.Model;
+﻿using DND.Core.Models;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Automapper;
 using System;
 using System.Collections.Generic;
@@ -36,14 +36,14 @@ namespace DND.Core.DTOs
         public string Description { get; set; }
 
         [Required]
-        [Dropdown(typeof(Author), nameof(DND.Core.Model.Author.Name))]
+        [Dropdown(typeof(Author), nameof(DND.Core.Models.Author.Name))]
         public int AuthorId { get; set; }
 
         [Render(ShowForGrid = false, ShowForDisplay = false, ShowForEdit = false)]
         public AuthorDTO Author { get; set; }
 
         [Required]
-        [Dropdown(typeof(Category), nameof(DND.Core.Model.Category.Name))]
+        [Dropdown(typeof(Category), nameof(DND.Core.Models.Category.Name))]
         public int CategoryId { get; set; }
 
         [Render(ShowForGrid = false, ShowForDisplay = false, ShowForEdit = false)]

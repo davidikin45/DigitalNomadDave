@@ -9,10 +9,10 @@ using Microsoft.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.ViewModels;
 using Solution.Base.Controllers;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Authorization;
 
 namespace DND.Controllers

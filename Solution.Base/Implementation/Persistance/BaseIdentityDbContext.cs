@@ -10,7 +10,7 @@ using Solution.Base.Interfaces.Model;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using System.Threading;
 using Solution.Base.Interfaces.Persistance;
 using System.Data.Entity.Infrastructure;

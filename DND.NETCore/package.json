@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "DND.NETCore",
+  "author": {
+    "name": "David Ikin",
+    "email": "davidikin45@gmail.com"
+  },
+  "private": true,
+  "devDependencies": {
+  }
+}

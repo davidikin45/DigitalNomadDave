@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
-using DND.Core.Model;
+using DND.Core.Models;
 using Solution.Base.Interfaces.Automapper;
 using DND.Core.Enums;
 using System;
 using AutoMapper;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using System.Collections.Generic;
 using DND.Core.DTOs;
 

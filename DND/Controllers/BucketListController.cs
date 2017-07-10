@@ -5,7 +5,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Solution.Base.Controllers;
 using DND.Core.ViewModels;
-using DND.Core.Model;
+using DND.Core.Models;
 using Solution.Base.Interfaces.Persistance;
 
 using DND.Core.Interfaces.Services;

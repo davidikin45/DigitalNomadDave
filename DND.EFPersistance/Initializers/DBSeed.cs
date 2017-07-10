@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DND.EFPersistance;
-using DND.Core.Model;
+using DND.Core.Models;
 
 using Solution.Base.Extensions;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
 using DND.Core.Constants;

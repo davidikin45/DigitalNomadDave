@@ -1,5 +1,5 @@
 ﻿using DND.Core.Interfaces.Persistance;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.DTOs;
 using Solution.Base.Interfaces.Services;
 using System;

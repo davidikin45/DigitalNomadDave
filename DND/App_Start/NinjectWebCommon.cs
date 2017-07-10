@@ -14,7 +14,7 @@ namespace DND.App_Start
     using System.IO;
     using System.Reflection;
     using Microsoft.AspNet.Identity;
-    using Core.Model;
+    using Core.Models;
     using Core.Interfaces.Persistance;
     using Microsoft.Owin.Security;
 
@@ -24,7 +24,7 @@ namespace DND.App_Start
     using Solution.Base.Automapper;
     using AutoMapper.QueryableExtensions;
      using Ninject.Web.Mvc.FilterBindingSyntax;
-    using Solution.Base.Implementation.Model;
+    using Solution.Base.Implementation.Models;
     using Solution.Base.Filters;
     using System.Web.Mvc;
     using Solution.Base.Ninject;

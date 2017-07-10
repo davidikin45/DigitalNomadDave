@@ -3,7 +3,7 @@ using Solution.Base.Alerts;
 using Solution.Base.Email;
 using Solution.Base.Helpers;
 using Solution.Base.Implementation.DTOs;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Logging;
 using Solution.Base.Interfaces.Services;
 using System;

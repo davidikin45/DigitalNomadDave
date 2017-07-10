@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using DND.Core.Interfaces;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.Interfaces.Persistance;
 using DND.EFPersistance.Migrations;
 using Solution.Base.Implementation.Persistance;
 using DND.EFPersistance.Initializers;
 using System.Data.Entity.SqlServer;
 
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Interfaces.Persistance;
 
 namespace DND.EFPersistance

@@ -11,7 +11,7 @@ using System.Data;
 using System.Linq.Expressions;
 using RefactorThis.GraphDiff;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 
 namespace Solution.Base.Interfaces.Persistance
 {

@@ -10,7 +10,7 @@ using Solution.Base.Testing;
 using Solution.Base.Interfaces.Persistance;
 using Moq;
 using System.Linq;
-using DND.Core.Model;
+using DND.Core.Models;
 using DND.Core.Interfaces.Persistance;
 
 namespace DND.IntegrationTests.Controllers

@@ -20,7 +20,7 @@ using System.Globalization;
 using Solution.Base.Extensions;
 using Solution.Base.Helpers;
 using System.ServiceModel.Syndication;
-using Solution.Base.Implementation.Model;
+using Solution.Base.Implementation.Models;
 using Solution.Base.Email;
 
 namespace Solution.Base.Controllers
