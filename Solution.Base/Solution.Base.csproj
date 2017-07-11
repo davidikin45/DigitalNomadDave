@@ -282,6 +282,7 @@
     <Compile Include="Extensions\ModelHelperExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Extensions\ViewDataDictionaryExtensions.cs" />
+    <Compile Include="Filters\AjaxRequestAttribute.cs" />
     <Compile Include="Filters\ETagAttribute.cs" />
     <Compile Include="Filters\LogActionAttribute.cs" />
     <Compile Include="Filters\WebApiETagAttribute.cs" />

@@ -1,0 +1,13 @@
+﻿@model WebApiPagedResponseDTO<FileInfo>
+@{
+    HashSet<string> files = new HashSet<string>();
+}
+
+@foreach (var item in Model.Data)
+{
+    if (!files.Contains(item.Name))
+    {
+        @Html.Partial("_Media", item, new ViewDataDictionary { { "width", 0 } })
+        files.Add(item.Name);
+    }
+}

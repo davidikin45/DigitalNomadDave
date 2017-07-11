@@ -20,7 +20,8 @@
     "underscore": "^1.8.3",
     "instafeed.js": "^1.4.1",
     "magnific-popup": "^1.1.0",
-    "tinymce": "^4.5.5"
+    "tinymce": "^4.5.5",
+    "infinite-scroll": "^3.0.0"
   },
   "resolutions": {
     "angular": "1.5.8"

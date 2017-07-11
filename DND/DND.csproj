@@ -249,7 +249,7 @@
     <Compile Include="Controllers\CarouselController.cs" />
     <Compile Include="Controllers\BucketListController.cs" />
     <Compile Include="Controllers\Api\BlogPostController.cs" />
-    <Compile Include="Controllers\Api\DestinationController.cs" />
+    <Compile Include="Controllers\Api\LocationController.cs" />
     <Compile Include="Controllers\Api\FlightSearchController.cs" />
     <Compile Include="Controllers\Api\TagController.cs" />
     <Compile Include="Controllers\Api\CategoryController.cs" />
@@ -307,6 +307,8 @@
     <Content Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="bower_components\font-awesome\css\font-awesome.css" />
     <Content Include="bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="bower_components\infinite-scroll\dist\infinite-scroll.pkgd.js" />
+    <Content Include="bower_components\infinite-scroll\dist\infinite-scroll.pkgd.min.js" />
     <Content Include="bower_components\instafeed.js\instafeed.js" />
     <Content Include="bower_components\instafeed.js\instafeed.min.js" />
     <Content Include="bower_components\jquery-ui\jquery-ui.js" />
@@ -1067,6 +1069,7 @@
     <Content Include="Views\Project\_Projects.cshtml" />
     <Content Include="Views\Testimonial\_Testimonials.cshtml" />
     <None Include="css\styles.less" />
+    <Content Include="Views\Gallery\_GalleryList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

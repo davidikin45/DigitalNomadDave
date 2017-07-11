@@ -26,6 +26,7 @@ namespace DND
                        "~/bower_components/angularjs-slider/dist/rzslider.js",
                        "~/bower_components/underscore/underscore-min.js",
                        "~/bower_components/instafeed.js/instafeed.js",
+                       "~/bower_components/infinite-scroll/dist/infinite-scroll.pkgd.js",
                        "~/bower_components/magnific-popup/dist/jquery.magnific-popup.js",
                        "~/bower_components/ngmap/build/scripts/ng-map.js",
                         "~/js/db-geography.js")
@@ -68,7 +69,7 @@ namespace DND
             bundles.Add(new StyleBundle("~/css/admin/all").Include(
                 "~/css/admin.css"));
 
-           System.Web.Optimization.BundleTable.EnableOptimizations = true;
+           //System.Web.Optimization.BundleTable.EnableOptimizations = false;
         }
     }
 }

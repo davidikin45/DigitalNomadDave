@@ -20,6 +20,8 @@ using Solution.Base.Extensions;
 using Solution.Base.ModelMetadata;
 using DND.Core.Constants;
 using System.Web.UI;
+using Solution.Base.Filters;
+using System.Threading;
 
 namespace DND.Controllers
 {
@@ -79,12 +81,11 @@ namespace DND.Controllers
             }
         }
 
+        [NoAjaxRequest]
         [OutputCache(CacheProfile = "Cache24HourParams")]
-        // GET: Default/Details/5
         [Route("{name}")]
-        public virtual async Task<ActionResult> Gallery(string name, int page = 1, int pageSize = 40, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending)
+        public virtual async Task<ActionResult> Gallery(string name, int page = 1, int pageSize = 10, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending)
         {
-            var cts = TaskHelper.CreateChildCancellationTokenSource(ClientDisconnectedToken());
             try
             {
                 if (name == "instagram")
@@ -96,24 +97,7 @@ namespace DND.Controllers
                 if (!System.IO.Directory.Exists(physicalPath))
                     return HandleReadException();
 
-                var repository = _fileSystemRepositoryFactory.CreateFileRepository(cts.Token, physicalPath, true, "*.*", ".jpg", ".jpeg", ".mp4",".txt");
-                var dataTask = repository.GetAllAsync(LamdaHelper.GetOrderByFunc<FileInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
-                var totalTask = repository.GetCountAsync(null);
-
-                await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
-
-                var data = dataTask.Result;
-                var total = totalTask.Result;
-
-                var response = new WebApiPagedResponseDTO<FileInfo>
-                {
-                    Page = page,
-                    PageSize = pageSize,
-                    Records = total,
-                    Rows = data.ToList(),
-                    OrderColumn = orderColumn,
-                    OrderType = orderType
-                };
+                var response = await GetGalleryViewModel(physicalPath, page, pageSize, orderColumn, orderType);
 
                 ViewBag.Album = new DirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + name);
 
@@ -128,7 +112,56 @@ namespace DND.Controllers
             {
                 return HandleReadException();
             }
+        }
 
+        [AjaxRequest]
+        [ActionName("Gallery")]
+        [OutputCache(CacheProfile = "Cache24HourParams")]
+        [Route("{name}")]
+        public virtual async Task<ActionResult> GalleryList(string name, int page = 1, int pageSize = 10, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending)
+        {
+            try
+            {
+                name = name.ToLower().Replace("-", " ");
+                string physicalPath = Server.GetFolderPhysicalPathById(Folders.Gallery) + name;
+
+                if (!System.IO.Directory.Exists(physicalPath))
+                    return HandleReadException();
+
+                var response = await GetGalleryViewModel(physicalPath, page, pageSize, orderColumn, orderType);
+
+                return PartialView("_GalleryList",response);
+            }
+            catch (Exception ex)
+            {
+                return HandleReadException();
+            }
+        }
+
+        private async Task<WebApiPagedResponseDTO<FileInfo>> GetGalleryViewModel(string physicalPath, int page = 1, int pageSize = 40, string orderColumn = nameof(FileInfo.LastWriteTime), string orderType = OrderByType.Descending)
+        {
+            var cts = TaskHelper.CreateChildCancellationTokenSource(ClientDisconnectedToken());
+
+            var repository = _fileSystemRepositoryFactory.CreateFileRepository(cts.Token, physicalPath, true, "*.*", ".jpg", ".jpeg", ".mp4", ".txt");
+            var dataTask = repository.GetAllAsync(LamdaHelper.GetOrderByFunc<FileInfo>(orderColumn, orderType), (page - 1) * pageSize, pageSize);
+            var totalTask = repository.GetCountAsync(null);
+
+            await TaskHelper.WhenAllOrException(cts, dataTask, totalTask);
+
+            var data = dataTask.Result;
+            var total = totalTask.Result;
+
+            var response = new WebApiPagedResponseDTO<FileInfo>
+            {
+                Page = page,
+                PageSize = pageSize,
+                Records = total,
+                Rows = data.ToList(),
+                OrderColumn = orderColumn,
+                OrderType = orderType
+            };
+
+            return response;
         }
 
     }

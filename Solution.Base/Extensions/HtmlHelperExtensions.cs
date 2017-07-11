@@ -260,14 +260,14 @@ namespace Solution.Base.Extensions
             var ul = new TagBuilder("ul");
             ul.AddCssClass("pagination");
             ul.AddCssClass("justify-content-center");
-            ul.InnerHtml += AddLink(1, action, currentPageIndex == 1, "disabled", "<<", "First Page");
-            ul.InnerHtml += AddLink(currentPageIndex - 1, action, !hasPreviousPage, "disabled", "<", "Previous Page");
+            ul.InnerHtml += AddLink(1, action, currentPageIndex == 1, "disabled", "<<", "First Page", false);
+            ul.InnerHtml += AddLink(currentPageIndex - 1, action, !hasPreviousPage, "disabled", "<", "Previous Page", false);
             for (int i = firstPageNumber; i <= lastPageNumber; i++)
             {
-                ul.InnerHtml += AddLink(i, action, i == currentPageIndex, "active", i.ToString(), i.ToString());
+                ul.InnerHtml += AddLink(i, action, i == currentPageIndex, "active", i.ToString(), i.ToString(), false);
             }
-            ul.InnerHtml += AddLink(currentPageIndex + 1, action, !hasNextPage, "disabled", ">", "Next Page");
-            ul.InnerHtml += AddLink(totalPages, action, currentPageIndex == totalPages, "disabled", ">>", "Last Page");
+            ul.InnerHtml += AddLink(currentPageIndex + 1, action, !hasNextPage, "disabled", ">", "Next Page", true);
+            ul.InnerHtml += AddLink(totalPages, action, currentPageIndex == totalPages, "disabled", ">>", "Last Page", false);
 
             nav.InnerHtml += ul;
 
@@ -275,7 +275,7 @@ namespace Solution.Base.Extensions
         }
 
         //@Html.BootstrapPager(pageIndex, index => Url.Action("Index", "Product", new { pageIndex = index }), Model.TotalCount, numberOfLinks: 10)
-        private static TagBuilder AddLink(int index, Func<int, string> action, bool condition, string classToAdd, string linkText, string tooltip)
+        private static TagBuilder AddLink(int index, Func<int, string> action, bool condition, string classToAdd, string linkText, string tooltip, bool nextPage)
         {
             var li = new TagBuilder("li");
             li.AddCssClass("page-item");
@@ -286,6 +286,10 @@ namespace Solution.Base.Extensions
             }
             var a = new TagBuilder("a");
             a.AddCssClass("page-link");
+            if (nextPage && !condition)
+            {
+                a.AddCssClass("pagination__next");
+            }
             a.MergeAttribute("href", !condition ? action(index) : "javascript:");
             a.SetInnerText(linkText);
             li.InnerHtml = a.ToString();
