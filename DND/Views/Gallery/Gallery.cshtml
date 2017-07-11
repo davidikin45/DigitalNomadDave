@@ -35,7 +35,7 @@
     <p class="infinite-scroll-error"></p>
 </div>
 
-<p><button class="view-more-button btn btn-primary">View more</button></p>
+<p><button class="view-more-button btn btn-primary w-100">View more</button></p>
 
 @{Func<int, string> link = pageIndex => Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"], page = pageIndex });}
 @HtmlHelperExtensions.BootstrapPager(Html, Model.Page, link, Model.TotalItems, Model.PageSize, 5)
