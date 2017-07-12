@@ -728,3 +728,6 @@ img.shadow {
   animation-name: reveal;
   animation-direction: reverse;
 }
+.pointer {
+  cursor: pointer;
+}
