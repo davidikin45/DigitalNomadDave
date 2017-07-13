@@ -967,9 +967,7 @@
     <Content Include="Views\Shared\Navigation\_Navigation.cshtml" />
     <Content Include="Views\Shared\Footer\_Footer.cshtml" />
     <Content Include="Views\FlightSearch\Index.cshtml" />
-    <Content Include="App_Data\Airports.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="App_Data\Airports.json" />
     <Content Include="Views\Explore\Index.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
