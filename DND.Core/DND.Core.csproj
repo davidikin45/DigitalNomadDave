@@ -169,7 +169,6 @@
     <Folder Include="Interfaces\Model\" />
     <Folder Include="Interfaces\Repository\" />
     <Folder Include="Interfaces\UnitOfWork\" />
-    <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
