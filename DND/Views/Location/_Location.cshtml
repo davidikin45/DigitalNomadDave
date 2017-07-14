@@ -23,7 +23,7 @@
     <p><strong>Link:</strong> <a href="@Model.Link">@(string.IsNullOrEmpty(Model.LinkText) ? Model.Link : Model.LinkText)</a></p>
 }
 
-@if (!string.IsNullOrEmpty(Model.Album))
+@if (!string.IsNullOrEmpty(Model.Album) && Server.FolderExists(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album))
 {
     HashSet<string> files = new HashSet<string>();
     <div class="card-columns-md-2">

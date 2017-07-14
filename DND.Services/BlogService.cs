@@ -80,6 +80,18 @@ namespace DND.Services
             IEnumerable<BlogPostDTO> list;
             using (var UoW = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
             {
+                var posts = await UoW.Repository<IApplicationDbContext, BlogPost>().GetAsync(p => p.Published, o => o.OrderByDescending(p => p.DateCreated), pageNo * pageSize, pageSize, p => p.Category, p => p.Author, p => p.Tags.Select(t => t.Tag));
+                list = posts.ToList().Select(Mapper.Map<BlogPost, BlogPostDTO>);
+            }
+
+            return list;
+        }
+
+        public async Task<IEnumerable<BlogPostDTO>> GetPostsAsyncWithLocation(int pageNo, int pageSize, CancellationToken cancellationToken)
+        {
+            IEnumerable<BlogPostDTO> list;
+            using (var UoW = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
+            {
                 var posts = await UoW.Repository<IApplicationDbContext, BlogPost>().GetAsync(p => p.Published, o => o.OrderByDescending(p => p.DateCreated), pageNo * pageSize, pageSize, p => p.Category, p => p.Author, p => p.Tags.Select(t => t.Tag), p => p.Locations.Select(t => t.Location));
                 list = posts.ToList().Select(Mapper.Map<BlogPost, BlogPostDTO>);
             }
@@ -199,6 +211,24 @@ namespace DND.Services
         }
 
         #region "Admin"
+        public override async Task<IEnumerable<BlogPostDTO>> SearchAsync(CancellationToken cancellationToken, string search = "", Expression<Func<BlogPostDTO, bool>> filter = null, Expression<Func<IQueryable<BlogPostDTO>, IOrderedQueryable<BlogPostDTO>>> orderBy = null, int? pageNo = default(int?), int? pageSize = default(int?), params Expression<Func<BlogPostDTO, object>>[] includeProperties)
+        {
+            var filterConverted = GetMappedSelector<BlogPostDTO, BlogPost, bool>(filter);
+            var orderByConverted = GetMappedOrderBy<BlogPostDTO, BlogPost>(orderBy);
+            var includesConverted = GetMappedIncludes<BlogPostDTO, BlogPost>(includeProperties);
+            var list = includesConverted.ToList();
+            list.Add(p => p.Tags.Select(t => t.Tag));
+            includesConverted = list.ToArray();
+
+            IEnumerable<BlogPostDTO> dtoList;
+            using (var unitOfWork = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting, cancellationToken))
+            {
+                var entityList = await unitOfWork.Repository<IApplicationDbContext, BlogPost>().SearchAsync(search, filterConverted, orderByConverted, pageNo * pageSize, pageSize, includesConverted);
+                dtoList = entityList.ToList().Select(Mapper.Map<BlogPost, BlogPostDTO>);
+                return dtoList;
+            }
+        }
+
         public async override Task<IEnumerable<BlogPostDTO>> GetAllAsync(CancellationToken cancellationToken, Expression<Func<IQueryable<BlogPostDTO>, IOrderedQueryable<BlogPostDTO>>> orderBy = null, int? pageNo = default(int?), int? pageSize = default(int?), params Expression<Func<BlogPostDTO, object>>[] includeProperties)
         {
             return await GetPostsAsync(pageNo.Value, pageSize.Value, orderBy, cancellationToken);

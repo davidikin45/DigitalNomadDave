@@ -50,6 +50,8 @@ namespace Solution.Base.Implementation.Persistance
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
 
+            //Database.Log = Console.WriteLine;
+
             //Once a migration is created DB is never created
             //Database.SetInitializer<BaseIdentityDbContext<T>>(new MigrateDatabaseToLatestVersion<BaseIdentityDbContext, T>());
 

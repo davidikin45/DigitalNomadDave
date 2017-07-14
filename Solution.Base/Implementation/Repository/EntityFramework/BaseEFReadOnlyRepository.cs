@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Threading;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace Solution.Base.Implementation.Repository.EntityFramework
 {
@@ -80,7 +81,14 @@ namespace Solution.Base.Implementation.Repository.EntityFramework
                 query = query.Take(take.Value);
             }
 
+            DebugSQL(query);
+
             return query;
+        }
+
+        private void DebugSQL(IQueryable<TEntity> query)
+        {
+            var sql = query.ToString();
         }
 
         protected virtual IQueryable<TEntity> CreateSearchQuery(IQueryable<TEntity> query, string value)
