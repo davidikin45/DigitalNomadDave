@@ -273,6 +273,7 @@
     <Compile Include="Extensions\DropdownExtensions.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlTagExtensions.cs" />
     <Compile Include="Extensions\ModelHelperExtensions.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
     <Compile Include="Extensions\ViewDataDictionaryExtensions.cs" />

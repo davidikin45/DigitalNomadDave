@@ -40,11 +40,6 @@
     "LinkText": "Image Metadata"
   },
   {
-    "Controller": "",
-    "Action": "/admin/hangfire",
-    "LinkText": "Jobs"
-  },
-  {
     "Controller": "AdminAuthor",
     "Action": "Index",
     "LinkText": "Authors"
@@ -98,5 +93,15 @@
     "Controller": "Admin",
     "Action": "ClearCache",
     "LinkText": "Clear Cache"
+  },
+  {
+    "Controller": "",
+    "Action": "/admin/hangfire",
+    "LinkText": "Jobs"
+  },
+  {
+    "Controller": "",
+    "Action": "/Glimpse.axd",
+    "LinkText": "Glimpse"
   }
 ]

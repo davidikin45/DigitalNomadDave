@@ -63,6 +63,18 @@ namespace DND.Services
             return count;
         }
 
+        public IEnumerable<BlogPostDTO> GetPosts(int pageNo, int pageSize)
+        {
+            IEnumerable<BlogPostDTO> list;
+            using (var UoW = UnitOfWorkFactory.CreateReadOnly(BaseUnitOfWorkScopeOption.JoinExisting))
+            {
+                var posts = UoW.Repository<IApplicationDbContext, BlogPost>().Get(p => p.Published, o => o.OrderByDescending(p => p.DateCreated), pageNo * pageSize, pageSize, p => p.Category, p => p.Author, p => p.Tags.Select(t => t.Tag), p => p.Locations.Select(t => t.Location));
+                list = posts.ToList().Select(Mapper.Map<BlogPost, BlogPostDTO>);
+            }
+
+            return list;
+        }
+
         public async Task<IEnumerable<BlogPostDTO>> GetPostsAsync(int pageNo, int pageSize, CancellationToken cancellationToken)
         {
             IEnumerable<BlogPostDTO> list;

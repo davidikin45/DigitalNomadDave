@@ -16,6 +16,7 @@ namespace DND.Core.Interfaces.Services
     {
         Task<BlogPostDTO> GetPostAsync(int year, int month, string titleSlug, CancellationToken cancellationToken);
 
+        IEnumerable<BlogPostDTO> GetPosts(int pageNo, int pageSize);
         Task<IEnumerable<BlogPostDTO>> GetPostsAsync(int pageNo, int pageSize, CancellationToken cancellationToken);
         Task<IEnumerable<BlogPostDTO>> GetPostsForCarouselAsync(int pageNo, int pageSize, CancellationToken cancellationToken);
         Task<int> GetTotalPostsAsync(bool checkIsPublished, CancellationToken cancellationToken);

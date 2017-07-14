@@ -1,0 +1,30 @@
+﻿New Repository = git init
+Clone Repository = git clone https://github.com/jquery/jquery.git
+ 
+View remote repositories = git remote -v
+Add remote repository = git remote add origin https://github.com/jquery/jquery.git
+Get latest changes from remote = git fetch origin
+Get latest changes from remote and merge = git pull origin master
+ 
+Change branch = git checkout "branch"
+View Branches local = git branch
+View Branches remote = git branch -r
+View Versions = git tag
+Create Branch = git branch v2.0
+ 
+View branch changes = git log origin/master
+Get branhe chages = got merge origin/master
+ 
+Status = git status
+Add file New or Updated = git add readme.txt
+Add/Modify ALL files =  git add -A
+Modify ALL file that have already been added = git add -u
+Commit = git commit -m "message"
+History = git log OR git log --oneline --graph OR git shortlog
+What has changed based on SHA1 hash = git diff abcdef..123456
+What has changed based latest checkin = git diff HEAD~1..HEAD or git diff HEAD~1..
+Rollback file = git checkout readme.txt
+Rollback Change and discard = git reset --hard or  git reset --hard HEAD~1
+Rollback Commit to working changes = git reset --soft HEAD~1
+ 
+single changeset merge = git cherry-pick ABCDE
