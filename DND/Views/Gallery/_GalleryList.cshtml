@@ -5,9 +5,10 @@
 
 @foreach (var item in Model.Data)
 {
-    if (!files.Contains(item.Name))
+    var key = item.Name + item.Length;
+    if (!files.Contains(key))
     {
         @Html.Partial("_Media", item, new ViewDataDictionary { { "width", 0 } })
-        files.Add(item.Name);
+        files.Add(key);
     }
 }

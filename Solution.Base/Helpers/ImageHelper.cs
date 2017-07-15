@@ -26,7 +26,16 @@ namespace Solution.Base.Helpers
 
         public static string CaptionWithDate(this FileInfo fileinfo)
         {
-            return fileinfo.MediaDateTaken().ToString("MMM yyyy") + " - " + Caption(fileinfo);
+            var caption = Caption(fileinfo);
+            int num = 0;
+            if(Int32.TryParse(caption, out num))
+            {
+                return fileinfo.MediaDateTaken().ToString("MMM yyyy");
+            }
+            else
+            {
+                return fileinfo.MediaDateTaken().ToString("MMM yyyy") + " - " + caption;
+            }
         }
 
         public static string Caption(this FileInfo fileinfo)
