@@ -91,8 +91,13 @@ namespace DND.Controllers
                 if (name == "instagram")
                     return View("Instagram");
 
-                name = name.ToLower().Replace("-", " ");
                 string physicalPath = Server.GetFolderPhysicalPathById(Folders.Gallery) + name;
+
+                if (!System.IO.Directory.Exists(physicalPath))
+                {
+                    name = name.ToLower().Replace("-", " ");
+                    physicalPath = Server.GetFolderPhysicalPathById(Folders.Gallery) + name;
+                }
 
                 if (!System.IO.Directory.Exists(physicalPath))
                     return HandleReadException();
