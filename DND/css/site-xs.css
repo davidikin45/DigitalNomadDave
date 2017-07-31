@@ -29,7 +29,7 @@ body.landing-page {
   height: 100%;
 }
 .view-full-screen {
-  height: calc(50%);
+  height: calc(100% - 50px);
 }
 html.content-page {
   position: relative;
