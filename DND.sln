@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DND", "DND\DND.csproj", "{13E98EB0-6C3C-472A-AE3F-5C9778BDBE7A}"
 EndProject
@@ -44,6 +44,10 @@ EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "DND.Node", "DND.Node\DND.Node.njsproj", "{F9CB2C66-EDA3-463F-8A28-8A2B3BB8C374}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DND.AspNetCore.Web", "DND.AspNetCore.Web\DND.AspNetCore.Web.csproj", "{F412B8E1-19DE-4A72-9BD2-AD420EB163B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DND.AspNetCore2.Web", "DND.AspNetCore2.Web\DND.AspNetCore2.Web.csproj", "{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DND.Angular.Web", "DND.Angular.Web\DND.Angular.Web.csproj", "{5317DD98-DE99-436C-B745-A05BBD71A09A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -165,6 +169,22 @@ Global
 		{F412B8E1-19DE-4A72-9BD2-AD420EB163B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F412B8E1-19DE-4A72-9BD2-AD420EB163B2}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
 		{F412B8E1-19DE-4A72-9BD2-AD420EB163B2}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
+		{5317DD98-DE99-436C-B745-A05BBD71A09A}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -184,6 +204,11 @@ Global
 		{90B439C7-49F8-4490-A812-0A1DDE1BF4F0} = {1047ABE3-8224-4BFD-9349-709744645F14}
 		{F9CB2C66-EDA3-463F-8A28-8A2B3BB8C374} = {D6355170-A1EE-4BD0-B97E-E4CF9673AF41}
 		{F412B8E1-19DE-4A72-9BD2-AD420EB163B2} = {D6355170-A1EE-4BD0-B97E-E4CF9673AF41}
+		{4EF29FD4-7EFD-4198-96A3-0E67FB27BB0B} = {D6355170-A1EE-4BD0-B97E-E4CF9673AF41}
+		{5317DD98-DE99-436C-B745-A05BBD71A09A} = {D6355170-A1EE-4BD0-B97E-E4CF9673AF41}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {349B5576-B169-4069-9E14-0B8E9E32ED3C}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true

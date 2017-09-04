@@ -64,7 +64,7 @@ namespace Solution.Base.Implementation.Services
         public Expression<Func<TDestination, Object>>[] GetMappedIncludes<TSource, TDestination>(Expression<Func<TSource, Object>>[] selectors)
         {
             if (selectors == null)
-                return null;
+                return new Expression<Func<TDestination, Object>>[] { };
 
             List<Expression<Func<TDestination, Object>>> returnList = new List<Expression<Func<TDestination, Object>>>();
 
