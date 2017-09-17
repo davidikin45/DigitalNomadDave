@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<div class="instafeed card-columns-md-2 gallery" id="gallery" data-infinite-scroll='{ "button" : ".view-more-button", "scrollThreshold" : false, "path": ".pagination__next", "append": ".media-item", "status":".page-load-status", "hideNav" : ".pagination-nav" , "history" : false }'>
+<div class="instafeed card-columns-md-2 gallery" id="gallery" data-infinite-scroll='{ "button" : ".view-more-button", "scrollThreshold" : false, "path": ".pagination__next", "append": ".media-item", "status":".page-load-status", "history" : false }'>
     @Html.Partial("_GalleryList", Model)
 </div>
 
@@ -35,10 +35,12 @@
     <p class="infinite-scroll-error"></p>
 </div>
 
-<p><button class="view-more-button btn btn-primary w-100">View more</button></p>
+<p class="hidden-sm-up"><button class="view-more-button btn btn-primary w-100">View more</button></p>
 
+<div class="hidden-xs-down">
 @{Func<int, string> link = pageIndex => Url.Action("Gallery", new { name = ViewContext.RouteData.Values["name"], page = pageIndex });}
 @HtmlHelperExtensions.BootstrapPager(Html, Model.Page, link, Model.TotalItems, Model.PageSize, 5)
+</div>
 
 @if (System.Configuration.ConfigurationManager.AppSettings.AllKeys.Contains("FacebookAppId") && System.Configuration.ConfigurationManager.AppSettings["FacebookAppId"] != "")
 {
