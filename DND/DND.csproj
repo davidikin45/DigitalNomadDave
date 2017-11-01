@@ -28,6 +28,7 @@
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -864,6 +865,7 @@
     <Content Include="images\bg.JPG" />
     <Content Include="images\github.jpg" />
     <Content Include="images\slack.jpg" />
+    <Content Include="images\youtube.png" />
     <Content Include="initial-content\Affiliates.html" />
     <Content Include="initial-content\Contact.html" />
     <Content Include="initial-content\SidebarAbout.html" />
