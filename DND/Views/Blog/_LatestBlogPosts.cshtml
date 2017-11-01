@@ -35,10 +35,18 @@
                         var poster = mainPhoto.ReadFileLine(1);
                         if (url.ToLower().Contains("mp4"))
                         {
-                            <video class="full-width-height" src="@url" @if(!string.IsNullOrEmpty(poster)){<text>poster="@poster" preload="none"</text>}else{<text>preload="metadata"</text>} controls></video>
+                            <video class="full-width-height" src="@url" @if (!string.IsNullOrEmpty(poster)) { <text> poster="@poster" preload="none" </text> } else { <text> preload="metadata" </text> } controls></video>
                         }
-                            else
-                            {
+                        else if (url.ToLower().Contains("you"))
+                        {
+                            <div>
+                                <div class="youtube-container">
+                                    <iframe src="@url" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
                             <a title="@post.Title" href="@(Url.Action<BlogController>(c => c.Post(post.DateCreated.Year, post.DateCreated.Month, post.UrlSlug)))">
                                 <img class="card-img-top" src="@url" alt="@post.Title">
                             </a>

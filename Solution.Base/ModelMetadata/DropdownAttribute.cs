@@ -14,7 +14,7 @@ namespace Solution.Base.ModelMetadata
     public class FolderDropdownAttribute : DropdownAttribute
     {
         public FolderDropdownAttribute(string folderId, Boolean nullable = false)
-            : this(folderId, nameof(DirectoryInfo.Name), nameof(DirectoryInfo.LastWriteTime), Solution.Base.ModelMetadata.OrderByType.Descending, nullable)
+            : this(folderId, nameof(DirectoryInfo.FullName), nameof(DirectoryInfo.LastWriteTime), Solution.Base.ModelMetadata.OrderByType.Descending, nullable)
         {
 
         }

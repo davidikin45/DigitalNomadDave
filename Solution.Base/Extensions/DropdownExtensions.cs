@@ -71,7 +71,7 @@ namespace Solution.Base.Extensions
 
                items.Add(new SelectListItem()
                {
-                   Text = GetValueString(item, valueProperty),
+                   Text = GetValueString(item, valueProperty).Replace(physicalFolderPath, ""),
                    Value = item.GetPropValue(nameof(DirectoryInfo.FullName)) != null ? item.GetPropValue(nameof(DirectoryInfo.FullName)).ToString().Replace(physicalFolderPath, "") : "",
                    Selected = item.GetPropValue(keyProperty) != null && ids.Contains(item.GetPropValue(keyProperty).ToString().Replace(physicalFolderPath, ""))
                }));

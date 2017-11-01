@@ -2,6 +2,7 @@
 
 @{
     var mainPhotoVideo = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album).MainPhotoOrVideo();
+    var mainPhotoVideoText = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album).MainPhotoOrVideoOrText();
     var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
 }
 
@@ -66,7 +67,7 @@
     <div class="blog-post-body">
         @if (mainPhotoVideo != null)
         {
-            @Html.Partial("_Media", mainPhotoVideo, new ViewDataDictionary { { "width", 500 }, { "link", (Url.Action<BlogController>(c => c.Post(Model.DateCreated.Year, Model.DateCreated.Month, Model.UrlSlug))) } })
+            @Html.Partial("_Media", mainPhotoVideoText, new ViewDataDictionary { { "width", 500 }, { "link", (Url.Action<BlogController>(c => c.Post(Model.DateCreated.Year, Model.DateCreated.Month, Model.UrlSlug))) } })
         }     
         <br />
         <br />
