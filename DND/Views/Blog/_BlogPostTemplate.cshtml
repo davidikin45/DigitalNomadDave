@@ -65,7 +65,7 @@
 
     <!--Short Description-->
     <div class="blog-post-body">
-        @if (mainPhotoVideo != null)
+        @if (mainPhotoVideoText != null)
         {
             @Html.Partial("_Media", mainPhotoVideoText, new ViewDataDictionary { { "width", 500 }, { "link", (Url.Action<BlogController>(c => c.Post(Model.DateCreated.Year, Model.DateCreated.Month, Model.UrlSlug))) } })
         }     
