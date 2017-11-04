@@ -7,7 +7,15 @@
     {
         if (mainPhotoVideoText.IsText())
         {
-            mainImageShare = mainPhotoVideoText.ReadFileLine(1);
+            var id = mainPhotoVideoText.ReadFileLine(0);
+            if (id.IsYouTube())
+            {
+                mainImageShare = id.YouTubeThumbailUrl();
+            }
+            else
+            {
+                mainImageShare = mainPhotoVideoText.ReadFileLine(1);
+            }
         }
         else
         {

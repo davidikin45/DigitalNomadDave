@@ -204,6 +204,11 @@ namespace Solution.Base.Helpers
             return System.Web.MimeMapping.GetMimeMapping(fileinfo.Name).StartsWith("video/");
         }
 
+        public static Boolean IsYouTube(this String id)
+        {
+            return id.Length == 11;
+        }
+
         public static Boolean IsText(this FileInfo fileinfo)
         {
             return System.Web.MimeMapping.GetMimeMapping(fileinfo.Name).StartsWith("text/");

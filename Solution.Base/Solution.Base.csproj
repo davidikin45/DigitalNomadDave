@@ -297,6 +297,7 @@
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\JsonHtmlHelpers.cs" />
     <Compile Include="Helpers\HtmlTagRegister.cs" />
+    <Compile Include="Helpers\YouTubeHelper.cs" />
     <Compile Include="Helpers\LamdaHelper.cs" />
     <Compile Include="Helpers\LinqHelper.cs" />
     <Compile Include="Helpers\NavigationMenuHelper.cs" />

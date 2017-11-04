@@ -28,11 +28,11 @@
         {
             <video class="full-width-height" src="@url" @if(!string.IsNullOrEmpty(poster)){<text>poster="@poster" preload="none"</text>}else{<text>preload="metadata"</text>} controls></video>
         }
-        else if (url.ToLower().Contains("you"))
+        else if (url.IsYouTube())
         {
             <div>
                 <div class="youtube-container">
-                    <iframe src="@url" frameborder="0" allowfullscreen></iframe>
+                    <iframe src="@url.YouTubeEmbedUrl()" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         }
