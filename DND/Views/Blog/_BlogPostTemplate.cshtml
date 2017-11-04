@@ -1,9 +1,19 @@
 ﻿@model DND.Core.DTOs.BlogPostDTO
 
 @{
-    var mainPhotoVideo = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album).MainPhotoOrVideo();
     var mainPhotoVideoText = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + Model.Album).MainPhotoOrVideoOrText();
-    var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
+    var mainImageShare = "";
+    if (mainPhotoVideoText != null)
+    {
+        if (mainPhotoVideoText.IsText())
+        {
+            mainImageShare = mainPhotoVideoText.ReadFileLine(1);
+        }
+        else
+        {
+            mainImageShare = mainPhotoVideoText.AbsoluteShareUrlSlug();
+        }
+    }
 }
 
 <div class="blog-post">
