@@ -10,7 +10,7 @@
             var id = mainPhotoVideoText.ReadFileLine(0);
             if (id.IsYouTube())
             {
-                mainImageShare = id.YouTubeThumbailUrl();
+                mainImageShare = id.YouTubeMaxResThumbailUrl();
             }
             else
             {
