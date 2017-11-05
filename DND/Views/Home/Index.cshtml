@@ -48,6 +48,13 @@
     }
 }
 
+<div class="container-fluid section-grey">
+    <div class="row margin-bottom-15">
+        <div class="col-12 text-center"><h2>@(Html.ActionLink<BlogController>(c => c.Posts(1), "Latest Blog Posts"))</h2></div>
+    </div>
+    @(Html.Action<BlogController>(c => c.LatestBlogPosts()))
+</div>
+
 <div class="section-white">
     <div class="container">
         <div class="row">
@@ -65,17 +72,10 @@
                 <p>
                     @if (nextLocationName != "")
             {<text><google-map latitude="@nextLocationLatitude" longitude="@nextLocationLongitude"></google-map></text>} &nbsp; @nextLocationName
-            </p>
-            </div>
+        </p>
         </div>
+      </div>
     </div>
-</div>
-
-<div class="container-fluid section-grey">
-    <div class="row margin-bottom-15">
-        <div class="col-12 text-center"><h2>Latest Blog Posts</h2></div>
-    </div>
-    @(Html.Action<BlogController>(c => c.LatestBlogPosts()))
 </div>
 
 @{
