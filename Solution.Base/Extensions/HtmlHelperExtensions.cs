@@ -407,7 +407,7 @@ namespace Solution.Base.Extensions
             StringBuilder sb2 = new StringBuilder();
             sb2.AppendLine(" (adsbygoogle = window.adsbygoogle || []).push({ ");
             sb2.AppendLine(" google_ad_client: '"+ id + "', ");
-            sb2.AppendLine(" enable_page_level_ads: true ");
+            sb2.AppendLine(" enable_page_level_ads: false ");
             sb2.AppendLine(" }); ");
 
             script2.AppendHtml(sb2.ToString());
