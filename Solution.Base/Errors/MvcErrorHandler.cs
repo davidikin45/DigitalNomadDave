@@ -18,6 +18,10 @@ namespace Solution.Base.Errors
 {
     public static class MvcExceptionHandler
     {
+        public static void LogException(Interfaces.Logging.ILogger logger, Exception ex)
+        {
+            logger.Error(ex);
+        }
 
         public static void HandleException(HttpContext httpContext, Exception ex)
         {

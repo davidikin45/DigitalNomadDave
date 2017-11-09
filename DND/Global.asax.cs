@@ -17,6 +17,7 @@ using Solution.Base.Controllers;
 using Solution.Base.Alerts;
 using Solution.Base.Extensions;
 using Solution.Base.Errors;
+using Solution.Base.Interfaces.Logging;
 
 namespace DND
 {
@@ -71,6 +72,9 @@ namespace DND
             var httpContext = ((MvcApplication)sender).Context;
             var ex = Server.GetLastError();
 
+            var logFactory = (ILogFactory)System.Web.Mvc.DependencyResolver.Current.GetService(typeof(ILogFactory));
+
+            MvcExceptionHandler.LogException(logFactory.GetLogger(), ex);
             MvcExceptionHandler.HandleException(httpContext, ex);
         }
 
