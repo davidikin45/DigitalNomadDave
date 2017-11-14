@@ -31,7 +31,7 @@
     {
         if (!files.Contains(file.Name))
         {
-            @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 0 } })
+            @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 800}, { "height", 0 } })
             files.Add(file.Name);
         }
         @*<div class="card-spacer">&nbsp;</div>*@

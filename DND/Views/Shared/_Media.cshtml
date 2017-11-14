@@ -13,7 +13,7 @@
     @if (Model.IsImage())
             {
         <a class="card-img-top gallery-image" href="@link" title="@Model.CaptionWithDate()">
-            <img alt="@Model.CaptionWithDate()" src="@Model.VirtualPathSlug(1100, (int)ViewBag.Width)" />
+            <img alt="@Model.CaptionWithDate()" src="@Model.VirtualPathSlug((int)ViewBag.Width, (int)ViewBag.Height)" />
         </a>
     }
     else if (Model.IsVideo())

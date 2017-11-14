@@ -8,7 +8,7 @@
     var key = item.Name + item.Length.ToString();
     if (!files.Contains(key))
     {
-        @Html.Partial("_Media", item, new ViewDataDictionary { { "width", 0 } })
+        @Html.Partial("_Media", item, new ViewDataDictionary { { "width", 800 }, { "height", 0 } })
         files.Add(key);
     }
 }

@@ -119,7 +119,7 @@
         <div class="blog-post-body gallery">
             @if (mainPhotoVideoText != null)
             {
-                @Html.Partial("_Media", mainPhotoVideoText, new ViewDataDictionary { { "width", 690 } })
+                @Html.Partial("_Media", mainPhotoVideoText, new ViewDataDictionary { { "width", 1250 }, { "height", 600 } })
                 <br /><br />
             }
 
@@ -132,7 +132,7 @@
                     {
                         if (mainPhotoVideoText == null || mainPhotoVideoText.FullName != file.FullName)
                         {
-                            @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 0 } })
+                            @Html.Partial("_Media", file, new ViewDataDictionary { { "width", 800 }, { "height", 0 } })
                             @*<div class="card-spacer">&nbsp;</div>*@
                         }
                     }
