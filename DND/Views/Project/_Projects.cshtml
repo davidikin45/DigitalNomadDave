@@ -11,12 +11,18 @@
                 @Html.Raw(@"<div class=""card-deck"">")
             }
             <div class="card mb-4">
-                @if (!string.IsNullOrEmpty(project.File) && Server.FileExists(Folders.Projects, project.File))
+                @if ((!string.IsNullOrEmpty(project.File) && Server.FileExists(Folders.Projects, project.File)) || (!string.IsNullOrEmpty(project.Album) && Server.FolderExists(Folders.Gallery, project.Album)))
                 {
                     bool isVideo = false;
                     bool isImage = false;
                     bool isText = false;
                     var media = Server.GetFileInfo(Folders.Projects, project.File);
+
+                    if (media == null)
+                    {
+                        media = Server.GetDirectoryInfo(Server.GetFolderPhysicalPathById(Folders.Gallery) + project.Album).MainPhotoOrVideoOrText();
+                    }
+
                     if (media != null)
                     {
                         isVideo = media.IsVideo();
@@ -26,7 +32,7 @@
 
                     if (isImage)
                     {
-                        <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 500))" alt="@project.Name"></a>
+                        <a class="gallery-image" href="@(media.VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(media.VirtualPathSlug(800, 500))" alt="@project.Name"></a>
                     }
                     else if (isText)
                     {

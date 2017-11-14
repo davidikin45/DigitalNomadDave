@@ -17,6 +17,8 @@ namespace DND.Core.Models
 
         public string File { get; set; }
 
+        public string Album { get; set; }
+
         [Required, StringLength(200)]
         public string DescriptionText { get; set; }
 

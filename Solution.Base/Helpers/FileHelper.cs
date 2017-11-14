@@ -61,6 +61,11 @@ namespace Solution.Base.Helpers
             return null;
         }
 
+        public static bool FolderExists(this HttpServerUtilityBase server, string folderId, string path)
+        {
+            return FolderExists(server, server.GetFolderPhysicalPathById(folderId) + path);
+        }
+
         public static bool FolderExists(this HttpServerUtilityBase server, string path)
         {
             return Directory.Exists(path);

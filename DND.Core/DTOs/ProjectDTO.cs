@@ -26,6 +26,10 @@ namespace DND.Core.DTOs
         [FileDropdown(Folders.Projects, true)]
         public string File { get; set; }
 
+        [Render(AllowSortForGrid = false)]
+        [FolderDropdown(Folders.Gallery, true)]
+        public string Album { get; set; }
+
         [Required, StringLength(200)]
         public string DescriptionText { get; set; }
 
