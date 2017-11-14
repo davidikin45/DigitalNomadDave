@@ -13,7 +13,44 @@
             <div class="card mb-4">
                 @if (!string.IsNullOrEmpty(project.File) && Server.FileExists(Folders.Projects, project.File))
                 {
-                    <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 500))" alt="@project.Name"></a>
+                    bool isVideo = false;
+                    bool isImage = false;
+                    bool isText = false;
+                    var media = Server.GetFileInfo(Folders.Projects, project.File);
+                    if (media != null)
+                    {
+                        isVideo = media.IsVideo();
+                        isImage = media.IsImage();
+                        isText = media.IsText();
+                    }
+
+                    if (isImage)
+                    {
+                        <a class="gallery-image" href="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug())" title="@project.Name"><img class="card-img-top" src="@(Server.GetFileInfo(Folders.Projects, project.File).VirtualPathSlug(800, 500))" alt="@project.Name"></a>
+                    }
+                    else if (isText)
+                    {
+                        var url = media.ReadFileLine(0);
+                        var poster = media.ReadFileLine(1);
+                        if (url.ToLower().Contains("mp4"))
+                        {
+                            <video class="full-width-height" src="@url" @if (!string.IsNullOrEmpty(poster)) { <text> poster="@poster" preload="none" </text>  } else { <text> preload="metadata" </text>  } controls></video>
+                        }
+                        else if (url.IsYouTube())
+                        {
+                            <div>
+                                <div class="youtube-container">
+                                    <iframe src="@url.YouTubeEmbedUrl()" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="gallery-image" title="@project.Name" href="@url">
+                                <img class="card-img-top" src="@url" alt="@project.Name">
+                            </a>
+                        }
+                    }
                 }
                 <div class="card-block">
                     @if (string.IsNullOrEmpty(project.Link))
