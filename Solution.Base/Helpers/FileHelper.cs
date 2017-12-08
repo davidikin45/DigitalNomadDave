@@ -121,6 +121,27 @@ namespace Solution.Base.Helpers
             return System.Configuration.ConfigurationManager.AppSettings["SiteUrl"] + VirtualPathSlug(fileinfo, width, height, size, maxWidth, maxHeight, watermark);
         }
 
+        public static string VirtualPathSlugOrUrl(this FileInfo fileinfo, int width = 0, int height = 0, int size = 0, int maxWidth = 0, int maxHeight = 0, bool watermark = false)
+        {
+
+            if (fileinfo.IsText())
+            {
+                var id = fileinfo.ReadFileLine(0);
+                if (id.IsYouTube())
+                {
+                    return id.YouTubeMaxResThumbailUrl();
+                }
+                else
+                {
+                   return fileinfo.ReadFileLine(1);
+                }
+            }
+            else
+            {
+                return VirtualPathSlug(fileinfo, width, height, size, maxWidth, maxHeight, watermark);
+            }
+        }
+
         public static string VirtualPathSlug(this FileInfo fileinfo, int width = 0, int height = 0, int size = 0, int maxWidth = 0, int maxHeight = 0, bool watermark = false)
         {
             var absoluteVirtual = GetAbsoluteVirtualPath(fileinfo.FullName);

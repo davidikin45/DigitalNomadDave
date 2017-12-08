@@ -313,10 +313,6 @@
     <Content Include="bower_components\angularjs-slider\dist\rzslider.min.js" />
     <Content Include="bower_components\angular\angular.js" />
     <Content Include="bower_components\angular\angular.min.js" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
-    <Content Include="bower_components\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="bower_components\bootstrap\dist\js\bootstrap.min.js" />
     <Content Include="bower_components\font-awesome\css\font-awesome.css" />
     <Content Include="bower_components\font-awesome\css\font-awesome.min.css" />
     <Content Include="bower_components\infinite-scroll\dist\infinite-scroll.pkgd.js" />
@@ -877,6 +873,10 @@
     <Content Include="js\hostel-world\hostel-world.js" />
     <Content Include="js\hostel-world\momentLocale.js" />
     <Content Include="js\hostel-world\moment.min.js" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="node_modules\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="node_modules\bootstrap\dist\js\bootstrap.bundle.min.js" />
     <Content Include="robots.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -987,8 +987,6 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css.map" />
     <Content Include="bower_components\angular-ui-grid\ui-grid.eot" />
     <Content Include="bower_components\angular-ui-grid\ui-grid.ttf" />
     <Content Include="bower_components\angular-ui-grid\ui-grid.woff" />
@@ -1081,6 +1079,8 @@
     <Content Include="Views\Testimonial\_Testimonials.cshtml" />
     <None Include="css\styles.less" />
     <Content Include="Views\Gallery\_GalleryList.cshtml" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="node_modules\bootstrap\dist\css\bootstrap.min.css.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

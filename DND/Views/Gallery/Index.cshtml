@@ -34,7 +34,15 @@
     @foreach (var album in Model.Data)
     {
         <div class="card card-inverse" style="display:inline-block">
-            <img class="card-img-top" alt="@album.Name.PascalCase().GetStringWithSpacesAndFirstLetterUpper()" src="@album.MainPhotoOrVideo().VirtualPathSlug(640, 640)" />
+            
+            @{ 
+                var mainPhotoVideoText = album.MainPhotoOrVideo();
+                if (mainPhotoVideoText == null)
+                {
+                    mainPhotoVideoText = album.MainPhotoOrVideoOrText();
+                }
+            }
+            <img class="card-img-top" alt="@album.Name.PascalCase().GetStringWithSpacesAndFirstLetterUpper()" src="@mainPhotoVideoText.VirtualPathSlugOrUrl(640, 640)" />
             <a class="card-img-top" title="@album.Name.PascalCase().GetStringWithSpacesAndFirstLetterUpper()" href="@(Url.Action("Gallery", new { name = album.Name.ToSlug() }))">            
                 <div class="card-img-overlay card-img-overlay-hover d-flex">
                     <div class="my-auto mx-auto text-center">

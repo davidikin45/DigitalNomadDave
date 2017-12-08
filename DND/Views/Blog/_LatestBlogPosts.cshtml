@@ -1,11 +1,15 @@
 ﻿@model IList<DND.Core.DTOs.BlogPostDTO>
 
+@{
+    int i = 1;
+}
+
 <div class="row">
     <div class="offset-1 col-10">
         <div class="card-deck">
             @foreach (var post in Model)
             {
-                <div class="card margin-bottom-10" style="max-width:550px">
+                <div class="card mb-3" style="max-width:500px">
                     @{
                         bool isVideo = false;
                         bool isImage = false;
@@ -35,7 +39,7 @@
                         var poster = mainPhoto.ReadFileLine(1);
                         if (url.ToLower().Contains("mp4"))
                         {
-                            <video class="full-width-height" src="@url" @if (!string.IsNullOrEmpty(poster)) { <text> poster="@poster" preload="none" </text> } else { <text> preload="metadata" </text> } controls></video>
+                            <video class="full-width-height" src="@url" @if (!string.IsNullOrEmpty(poster)) { <text> poster="@poster" preload="none" </text>  } else { <text> preload="metadata" </text>  } controls></video>
                         }
                         else if (url.IsYouTube())
                         {
@@ -53,7 +57,7 @@
                         }
                     }
 
-                    <div class="card-block">
+                    <div class="card-body">
                         <a href="@(Url.Action<BlogController>(c => c.Post(post.DateCreated.Year, post.DateCreated.Month, post.UrlSlug)))" title="@post.Title">
                             <h4 class="card-title">@post.Title</h4>
                         </a>
@@ -62,6 +66,15 @@
                     </div>
 
                 </div>
+                        if (i % 2 == 0)
+                        {
+                            <div class="w-100 hidden-xs-down hidden-lg-up"><!-- wrap every 2 on sm, md--></div>
+                        }
+                        if (i % 3 == 0)
+                        {
+                            <div class="w-100 hidden-md-down"><!-- wrap every 3 on lg, xl--></div>
+                            }
+                            i++;
                         }
         </div>
     </div>

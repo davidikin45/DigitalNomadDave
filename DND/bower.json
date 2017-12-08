@@ -2,7 +2,6 @@
   "name": "DND",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6",
     "font-awesome": "^4.6.3",
     "jQuery": "^3.1.0",
     "jquery-validate": "^1.15.1",

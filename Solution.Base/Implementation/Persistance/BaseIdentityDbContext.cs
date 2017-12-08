@@ -37,7 +37,7 @@ namespace Solution.Base.Implementation.Persistance
         public BaseIdentityDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString, throwIfV1Schema: false)
         {
-            SqlProviderServices.SqlServerTypesAssemblyName = "Microsoft.SqlServer.Types, Version=14.0.314.76, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
+            SqlProviderServices.SqlServerTypesAssemblyName = "Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91";
 
             //UTC Date Time
             //https://docs.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/json-and-xml-serialization

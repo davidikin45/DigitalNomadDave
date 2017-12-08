@@ -66,7 +66,7 @@ namespace DND.Controllers
             var result = Task.Run(async () =>
             {
 
-                var postsTask = _blogService.BlogPostService.GetPostsAsync(0, 3, cts.Token);
+                var postsTask = _blogService.BlogPostService.GetPostsAsync(0, 6, cts.Token);
 
                 await TaskHelper.WhenAllOrException(cts, postsTask);
 

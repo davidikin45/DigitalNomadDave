@@ -7,7 +7,7 @@
     {
         foreach (var tag in Model)
         {
-            <a href="@(Url.Action(nameof(BlogController.Tag),"Blog", new { tagSlug = tag.UrlSlug }))" title="@(String.Format("See all posts in {0}", tag.Name))"><span class="badge badge-default">@tag.Name</span></a>
+            <a href="@(Url.Action(nameof(BlogController.Tag),"Blog", new { tagSlug = tag.UrlSlug }))" title="@(String.Format("See all posts in {0}", tag.Name))"><span class="badge badge-dark">@tag.Name</span></a>
         }
     }
     else

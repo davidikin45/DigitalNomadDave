@@ -39,7 +39,7 @@
             get: 'user',
             userId: '@System.Configuration.ConfigurationManager.AppSettings["InstagramUserId"]',
             accessToken: '@System.Configuration.ConfigurationManager.AppSettings["InstagramAccessToken"]',
-            template: '<div class="card card-spacer-bottom" style="display:inline-block" >{{model.template}}<div class="card-block"><p class="card-text"><small class="text-muted pull-left">{{likes}} likes</small><small class="text-muted pull-right">{{comments}} comments</small></p><p class="card-text voffset2"><a class="instagram-caption" href="{{link}}" target="_blank">{{caption}}</a></p></div></div>',
+            template: '<div class="card card-spacer-bottom" style="display:inline-block" >{{model.template}}<div class="card-body"><p class="card-text"><small class="text-muted pull-left">{{likes}} likes</small><small class="text-muted pull-right">{{comments}} comments</small></p><p class="card-text voffset2"><a class="instagram-caption" href="{{link}}" target="_blank">{{caption}}</a></p></div></div>',
             resolution: 'standard_resolution',
             filter: function (image) {
                 if(image.type === 'video')

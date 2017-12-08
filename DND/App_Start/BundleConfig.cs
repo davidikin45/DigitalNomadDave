@@ -15,7 +15,7 @@ namespace DND
                        //"~/bower_components/jquery-ui/jquery-ui.js",
                       "~/bower_components/jquery-validate-unobtrusive/jquery.validate.unobtrusive.js",
                       "~/bower_components/tether/dist/js/tether.js",
-                      "~/bower_components/bootstrap/dist/js/bootstrap.js",
+                      "~/node_modules/bootstrap/dist/js/bootstrap.bundle.js",
                       "~/js/hash.js",
                       "~/bower_components/angular/angular.js",
                       "~/bower_components/angular-cookies/angular-cookies.js",
@@ -45,7 +45,7 @@ namespace DND
 
            //respond = media queries < ie8
            bundles.Add(new StyleBundle("~/css/all").Include(
-                      "~/bower_components/bootstrap/dist/css/bootstrap.css",
+                      "~/node_modules/bootstrap/dist/css/bootstrap.css",
                       "~/bower_components/font-awesome/css/font-awesome.css",
                       "~/bower_components/angular-ui-grid/ui-grid.css",
                        "~/bower_components/angularjs-slider/dist/rzslider.css",

@@ -46,6 +46,8 @@ html.content-page {
 
 /* Navigation*/
 
+
+
 .navbar {
     background-color: #372f45;
 }
@@ -66,8 +68,16 @@ html.content-page {
         padding-right: 5px;
     }
 
+.navbar-inverse .navbar-toggler {
+    border-color: rgba(255,255,255,.1)
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-toggler {
+    color: #fff
+}
+
 .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255,255,255,.7) !important
 }
 
     .navbar-nav .open > .nav-link,
@@ -623,6 +633,11 @@ a:hover, a:focus {
     background-color: white;
 }
 
+.card-img-overlay
+{
+    color: white;
+}
+
 .card-img-overlay-hover {
     background-color: rgba(0,0,0,0.4);
     border: 2px solid #000;
@@ -860,4 +875,53 @@ a.shadow img, img.shadow {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/*\
+ * Restore Bootstrap 3 "hidden" utility classes.
+\*/
+
+/* Breakpoint XS */
+@media (max-width: 575px) {
+    .hidden-xs-down, .hidden-sm-down, .hidden-md-down, .hidden-lg-down, .hidden-xl-down,
+    .hidden-xs-up,
+    .hidden-unless-sm, .hidden-unless-md, .hidden-unless-lg, .hidden-unless-xl {
+        display: none !important;
+    }
+}
+
+/* Breakpoint SM */
+@media (min-width: 576px) and (max-width: 767px) {
+    .hidden-sm-down, .hidden-md-down, .hidden-lg-down, .hidden-xl-down,
+    .hidden-xs-up, .hidden-sm-up,
+    .hidden-unless-xs, .hidden-unless-md, .hidden-unless-lg, .hidden-unless-xl {
+        display: none !important;
+    }
+}
+
+/* Breakpoint MD */
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-md-down, .hidden-lg-down, .hidden-xl-down,
+    .hidden-xs-up, .hidden-sm-up, .hidden-md-up,
+    .hidden-unless-xs, .hidden-unless-sm, .hidden-unless-lg, .hidden-unless-xl {
+        display: none !important;
+    }
+}
+
+/* Breakpoint LG */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hidden-lg-down, .hidden-xl-down,
+    .hidden-xs-up, .hidden-sm-up, .hidden-md-up, .hidden-lg-up,
+    .hidden-unless-xs, .hidden-unless-sm, .hidden-unless-md, .hidden-unless-xl {
+        display: none !important;
+    }
+}
+
+/* Breakpoint XL */
+@media (min-width: 1200px) {
+    .hidden-xl-down,
+    .hidden-xs-up, .hidden-sm-up, .hidden-md-up, .hidden-lg-up, .hidden-xl-up,
+    .hidden-unless-xs, .hidden-unless-sm, .hidden-unless-md, .hidden-unless-lg {
+        display: none !important;
+    }
 }

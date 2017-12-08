@@ -1,7 +1,8 @@
 ﻿@using System.Web.Mvc.Html
 
-<nav class="navbar fixed-top navbar-inverse navbar-toggleable-md scrolling-navbar @(ViewBag.NavBarTransparent == true ? "navbar-transparent" : "")">
+<nav class="navbar fixed-top navbar-inverse navbar-expand-md scrolling-navbar @(ViewBag.NavBarTransparent == true ? "navbar-transparent" : "")">
     <div class="container">
+        @(Html.MenuLink<HomeController>(c => c.Index(), @System.Configuration.ConfigurationManager.AppSettings["SiteTitle"], "navbar-brand ", "", @"<img src=""" + Url.Content(System.Configuration.ConfigurationManager.AppSettings["SiteLogoSmall"]) + @""" width=""32"" height=""32"" class=""d-inline-block align-top"" alt=""" + @System.Configuration.ConfigurationManager.AppSettings["SiteTitle"] + @""">"))
         <div class="navbar-toggler-right">
             <button id="openNav" class="navbar-toggler hidden-lg-up" type="button" onclick="openNav()">
                 <i class="fa fa-bars"></i>
@@ -11,9 +12,6 @@
             </button>
 
         </div>
-
-        @(Html.MenuLink<HomeController>(c => c.Index(), @System.Configuration.ConfigurationManager.AppSettings["SiteTitle"], "navbar-brand ","", @"<img src="""+ Url.Content(System.Configuration.ConfigurationManager.AppSettings["SiteLogoSmall"]) + @""" width=""32"" height=""32"" class=""d-inline-block align-top"" alt="""+ @System.Configuration.ConfigurationManager.AppSettings["SiteTitle"] + @""">"))
-
         <div class="collapse navbar-collapse" id="navbarsExampleContainer">
             <ul class="navbar-nav mr-auto" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
                 @foreach (var menuItem in Html.NavigationMenu().Menu)

@@ -6,8 +6,29 @@
 
     ViewBag.Blog = true;
     //ViewBag.BlogFullWidth = true;
-    var mainPhotoVideo = ((DirectoryInfo)ViewBag.Album).MainPhotoOrVideo();
-    var mainImageShare = mainPhotoVideo != null ? mainPhotoVideo.AbsoluteShareUrlSlug() : "";
+    var mainPhotoVideoText = ((DirectoryInfo)ViewBag.Album).MainPhotoOrVideoOrText();
+    var mainImageShare = "";
+    if(mainPhotoVideoText != null)
+    {
+        if (mainPhotoVideoText.IsText())
+        {
+            var id = mainPhotoVideoText.ReadFileLine(0);
+            if (id.IsYouTube())
+            {
+                mainImageShare = id.YouTubeMaxResThumbailUrl();
+            }
+            else
+            {
+                mainImageShare = mainPhotoVideoText.ReadFileLine(1);
+            }
+        }
+        else
+        {
+            mainImageShare = mainPhotoVideoText.AbsoluteShareUrlSlug();
+        }
+    }
+
+
     ViewBag.MainImage = mainImageShare;
 
     HashSet<string> files = new HashSet<string>();
