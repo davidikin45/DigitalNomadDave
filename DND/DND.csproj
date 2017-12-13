@@ -254,6 +254,7 @@
     <Compile Include="Controllers\Api\ProjectController.cs" />
     <Compile Include="Controllers\Api\LocaleController.cs" />
     <Compile Include="Controllers\Api\MarketController.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\TestimonialController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\CarouselController.cs" />
@@ -944,6 +945,7 @@
     <Content Include="uploads\bucket-list\incomplete\delete.txt" />
     <Content Include="uploads\projects\delete.txt" />
     <Content Include="uploads\social-media\share-image.JPG" />
+    <Content Include="uploads\videos\delete.txt" />
     <Content Include="Views\Shared\EditorTemplates\DestinationType.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Help.txt" />
     <Content Include="Views\Web.config">
@@ -1081,6 +1083,8 @@
     <Content Include="Views\Gallery\_GalleryList.cshtml" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap.css.map" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Video\_VideoList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

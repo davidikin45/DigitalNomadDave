@@ -10,6 +10,11 @@
     "LinkText": "GALLERY"
   },
   {
+    "Controller": "Video",
+    "Action": "Index",
+    "LinkText": "VIDEOS"
+  },
+  {
     "Controller": "BucketList",
     "Action": "Index",
     "LinkText": "BUCKET LIST"

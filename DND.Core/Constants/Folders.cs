@@ -10,6 +10,7 @@ namespace DND.Core.Constants
     {
         public const string Uploads = "Uploads";
         public const string Gallery = "Gallery";
+        public const string Videos = "Videos";
         public const string BucketList = "BucketList";
         public const string SocialMedia = "SocialMedia";
         public const string Carousel = "Carousel";
